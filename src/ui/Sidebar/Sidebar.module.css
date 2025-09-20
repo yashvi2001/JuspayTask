@@ -1,0 +1,252 @@
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 24px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  overflow: auto;
+  transition: transform 0.3s ease;
+}
+
+.leftSidebar {
+  left: 0;
+  width: 280px;
+}
+
+.rightSidebar {
+  right: 0;
+  width: 320px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 32px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  margin: 2px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.navItem:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.navItemActive {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 2px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.expandableNavItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin: 2px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.expandableNavItem:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.navItemContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.chevronIcon {
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.chevronExpanded {
+  transform: rotate(90deg);
+}
+
+.subNavItem {
+  padding: 6px 12px 6px 32px;
+  margin: 2px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.subNavItem:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.subNavItemActive {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  padding: 6px 12px 6px 32px;
+  margin: 2px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+/* Notification specific styles */
+.notificationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notificationContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notificationText {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 0 4px 0;
+}
+
+.notificationTime {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Activity specific styles */
+.activityContainer {
+  position: relative;
+}
+
+.activityTimeline {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #3b82f6, #10b981);
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0 12px 24px;
+  position: relative;
+}
+
+.activityAvatar {
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.contactItem:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.contactName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .rightSidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+}

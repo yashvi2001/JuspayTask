@@ -1,40 +1,6 @@
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 1px solid;
-}
-
-.theme-toggle-button:hover {
-  transition: all 0.3s ease;
-  opacity: 0.8;
-}
-
-.theme-icon {
-  width: 20px;
-  height: 20px;
-}
-
-/* In light mode, invert white sun to black for visibility on light background */
-.theme-icon.light {
-  filter: invert(1);
-}
-
-/* In dark mode, keep sun white for visibility on dark background */
-.theme-icon.dark {
-  filter: none;
-}
+/* Import modular CSS files */
+@import './styles/globals.css';
+@import './styles/scrollbar.css';
+@import './styles/interactions.css';
+@import './styles/utilities.css';
+@import './styles/responsive.css';

@@ -1,0 +1,66 @@
+import React, { useState, useCallback } from 'react';
+import { DashboardSidebar, Notifications, DashboardHeader } from './components';
+import { Dashboard } from './pages';
+import { useTheme } from './theme';
+import styles from './Layout.module.css';
+
+// Layout component handles the main app structure
+// Manages sidebar states and overall layout
+const Layout = () => {
+  const { theme } = useTheme();
+  const [leftSidebarOpen, setLeftSidebarOpen] = useState(true); // Default open
+  const [rightSidebarOpen, setRightSidebarOpen] = useState(true); // Default open
+
+  const toggleLeftSidebar = useCallback(() => {
+    setLeftSidebarOpen(prev => !prev);
+  }, []);
+
+  const toggleRightSidebar = useCallback(() => {
+    setRightSidebarOpen(prev => !prev);
+  }, []);
+
+  // Determine layout class based on sidebar states
+  const getLayoutClass = () => {
+    if (leftSidebarOpen && rightSidebarOpen) {
+      return styles.bothOpen;
+    } else if (leftSidebarOpen) {
+      return styles.leftOnly;
+    } else if (rightSidebarOpen) {
+      return styles.rightOnly;
+    } else {
+      return styles.noneOpen;
+    }
+  };
+
+  return (
+    <div
+      className={`${styles.layout} ${getLayoutClass()}`}
+      style={{
+        backgroundColor: theme.background,
+        color: theme.text,
+      }}
+    >
+      <DashboardSidebar
+        isOpen={leftSidebarOpen}
+        onClose={() => setLeftSidebarOpen(false)}
+      />
+
+      <div className={styles.mainContainer}>
+        <DashboardHeader
+          onMenuClick={toggleLeftSidebar}
+          onNotificationClick={toggleRightSidebar}
+          leftSidebarOpen={leftSidebarOpen}
+          rightSidebarOpen={rightSidebarOpen}
+        />
+        <Dashboard />
+      </div>
+
+      <Notifications
+        isOpen={rightSidebarOpen}
+        onClose={() => setRightSidebarOpen(false)}
+      />
+    </div>
+  );
+};
+
+export default Layout;

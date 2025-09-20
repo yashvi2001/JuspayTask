@@ -1,0 +1,104 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mainContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition:
+    margin-left 0.3s ease,
+    margin-right 0.3s ease;
+}
+
+/* When both sidebars are open */
+.bothOpen .mainContainer {
+  margin-left: 280px;
+  margin-right: 320px;
+}
+
+/* When only left sidebar is open */
+.leftOnly .mainContainer {
+  margin-left: 280px;
+  margin-right: 0;
+}
+
+/* When only right sidebar is open */
+.rightOnly .mainContainer {
+  margin-left: 0;
+  margin-right: 320px;
+}
+
+/* When no sidebars are open */
+.noneOpen .mainContainer {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Sidebar positioning */
+.sidebar {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.leftSidebar {
+  left: 0;
+  width: 280px;
+}
+
+.rightSidebar {
+  right: 0;
+  width: 320px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1200px) {
+  .bothOpen .mainContainer,
+  .rightOnly .mainContainer {
+    margin-right: 0;
+  }
+
+  .rightSidebar {
+    transform: translateX(100%);
+  }
+
+  .rightOnly .rightSidebar,
+  .bothOpen .rightSidebar {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .bothOpen .mainContainer,
+  .leftOnly .mainContainer {
+    margin-left: 0;
+  }
+
+  .leftSidebar {
+    transform: translateX(-100%);
+  }
+
+  .leftOnly .leftSidebar,
+  .bothOpen .leftSidebar {
+    transform: translateX(0);
+  }
+
+  .rightSidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftSidebar,
+  .rightSidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+}

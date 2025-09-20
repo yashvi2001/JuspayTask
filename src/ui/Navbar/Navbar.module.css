@@ -1,0 +1,164 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.iconButton:active {
+  transform: translateY(0);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.breadcrumbList li:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.5rem;
+  color: inherit;
+  opacity: 0.5;
+}
+
+.searchContainer {
+  flex: 0 0 auto;
+  max-width: 20rem;
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  min-width: 16rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0 1rem 0 2.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  pointer-events: none;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .leftSection {
+    gap: 1rem;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .searchContainer {
+    display: none;
+  }
+
+  .rightSection {
+    gap: 0.25rem;
+  }
+
+  .iconButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 0.75rem;
+  }
+
+  .leftSection {
+    gap: 0.75rem;
+  }
+}
+
+/* Dark theme */
+:global(.dark) .iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .iconButton {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .iconButton {
+    transition: none;
+  }
+
+  .iconButton:hover {
+    transform: none;
+  }
+}
