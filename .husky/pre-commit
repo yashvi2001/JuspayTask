@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged
+npx lint-staged
+
+# Check if there are any uncommitted changes after lint-staged
+if ! git diff --quiet; then
+  echo "⚠️  Files were modified by pre-commit hooks. Please review and commit again."
+  git diff --name-only
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
