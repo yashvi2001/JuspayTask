@@ -1,7 +1,7 @@
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0px;
+  height: 0px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -9,19 +9,39 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  background: transparent;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
-/* Dark theme scrollbar */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dark ::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: transparent;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: transparent;
 }

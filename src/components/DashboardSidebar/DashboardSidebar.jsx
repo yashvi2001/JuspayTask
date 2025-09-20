@@ -23,7 +23,18 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
     <Sidebar type="left" isOpen={isOpen} onClose={onClose}>
       {/* Logo Section */}
       <div className={styles.logo}>
-        <div className={styles.logoIcon}>B</div>
+        <div className={styles.logoIcon}>
+          <img
+            src="/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png"
+            alt="ByeWind Logo"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              borderRadius: '25px',
+            }}
+          />
+        </div>
         <span className={styles.logoText} style={{ color: theme.text }}>
           ByeWind
         </span>

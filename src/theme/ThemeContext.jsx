@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { themes, THEME_MODES } from './config';
 import { ThemeContext } from './context';
 
@@ -15,6 +15,12 @@ export const ThemeProvider = ({
   };
 
   const theme = themes[currentTheme];
+
+  // Set CSS custom properties when theme changes
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--body-background', theme.bodyBackground);
+  }, [theme]);
 
   const value = {
     theme,

@@ -28,7 +28,7 @@
 .logoIcon {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;

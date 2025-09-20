@@ -10,11 +10,16 @@
   padding: 0;
 }
 
+:root {
+  --body-background: #f8fafc;
+}
+
 html {
   /* Prevent iOS text size adjustment after orientation change */
   -webkit-text-size-adjust: 100%;
   /* Better text rendering */
   text-rendering: optimizeLegibility;
+  background-color: var(--body-background);
 }
 
 body {
@@ -31,7 +36,7 @@ body {
   font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.6;
   color: inherit;
-  background-color: inherit;
+  background-color: var(--body-background);
 
   /* Better font rendering */
   -webkit-font-smoothing: antialiased;
@@ -46,6 +51,7 @@ body {
   min-height: 100dvh; /* Dynamic viewport height for mobile */
   width: 100%;
   position: relative;
+  background-color: var(--body-background);
 }
 
 /* Smooth transitions for theme changes */

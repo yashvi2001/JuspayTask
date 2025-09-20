@@ -13,6 +13,7 @@ export const themes = {
     border: 'rgba(30, 41, 59, 0.1)',
     cardBackground: '#ffffff',
     sidebarBackground: '#ffffff',
+    bodyBackground: '#f8fafc',
   },
   dark: {
     background: '#1c1c1c',
@@ -23,6 +24,7 @@ export const themes = {
     border: 'rgba(255, 255, 255, 0.1)',
     cardBackground: 'rgba(255, 255, 255, 0.05)',
     sidebarBackground: '#1c1c1c',
+    bodyBackground: '#1c1c1c',
   },
 };
 

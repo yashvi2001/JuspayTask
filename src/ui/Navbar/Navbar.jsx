@@ -22,7 +22,7 @@ const Navbar = ({
     <header
       className={styles.header}
       style={{
-        backgroundColor: theme.cardBackground,
+        backgroundColor: theme.navbarBackground,
         borderBottom: `1px solid ${theme.border}`,
       }}
     >
@@ -86,7 +86,7 @@ const Navbar = ({
                 placeholder="Search"
                 className={styles.searchInput}
                 style={{
-                  backgroundColor: theme.background,
+                  backgroundColor: theme.cardBackground,
                   border: `1px solid ${theme.border}`,
                   color: theme.text,
                 }}
