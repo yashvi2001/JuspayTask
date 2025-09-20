@@ -17,20 +17,20 @@
 
 /* When both sidebars are open */
 .bothOpen .mainContainer {
-  margin-left: 280px;
-  margin-right: 320px;
+  margin-left: 252px;
+  margin-right: 288px;
 }
 
 /* When only left sidebar is open */
 .leftOnly .mainContainer {
-  margin-left: 280px;
+  margin-left: 252px;
   margin-right: 0;
 }
 
 /* When only right sidebar is open */
 .rightOnly .mainContainer {
   margin-left: 0;
-  margin-right: 320px;
+  margin-right: 288px;
 }
 
 /* When no sidebars are open */
@@ -50,12 +50,12 @@
 
 .leftSidebar {
   left: 0;
-  width: 280px;
+  width: 252px;
 }
 
 .rightSidebar {
   right: 0;
-  width: 320px;
+  width: 288px;
 }
 
 /* Mobile responsive adjustments */
@@ -91,7 +91,7 @@
   }
 
   .rightSidebar {
-    width: 280px;
+    width: 252px;
   }
 }
 
@@ -99,6 +99,6 @@
   .leftSidebar,
   .rightSidebar {
     width: 100%;
-    max-width: 280px;
+    max-width: 252px;
   }
 }

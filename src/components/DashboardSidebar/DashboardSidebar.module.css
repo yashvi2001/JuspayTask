@@ -1,10 +1,10 @@
 .sidebar {
-  width: 280px;
+  width: 252px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  gap: 24px;
+  padding: 20px;
+  gap: 20px;
   position: fixed;
   left: 0;
   top: 0;
@@ -20,54 +20,54 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 32px;
+  gap: 10px;
+  padding: 6px 0;
+  margin-bottom: 26px;
 }
 
 .logoIcon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .logoText {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
 .sectionTitle {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0 12px;
-  margin: 0 0 8px 0;
+  letter-spacing: 0.4px;
+  padding: 0 10px;
+  margin: 0 0 6px 0;
 }
 
 .navItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
 }
 
@@ -129,13 +129,13 @@
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
 }
 
@@ -157,7 +157,7 @@
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    max-width: 280px;
+    max-width: 252px;
   }
 }
 

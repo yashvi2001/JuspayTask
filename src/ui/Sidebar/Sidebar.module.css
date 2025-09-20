@@ -1,10 +1,10 @@
 .sidebar {
-  width: 280px;
+  width: 252px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  gap: 24px;
+  padding: 20px;
+  gap: 20px;
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -14,63 +14,62 @@
 
 .leftSidebar {
   left: 0;
-  width: 280px;
+  width: 252px;
 }
-
 .rightSidebar {
   right: 0;
-  width: 320px;
+  width: 288px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 32px;
+  gap: 10px;
+  padding: 6px 0;
+  margin-bottom: 26px;
 }
 
 .logoIcon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .logoText {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .section {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .sectionTitle {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
   margin-top: 0;
 }
 
 .navItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
+  gap: 10px;
+  padding: 6px 10px;
   margin: 2px 0;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .navItem:hover {
@@ -79,16 +78,16 @@
 
 .navItemActive {
   background-color: rgba(59, 130, 246, 0.1);
-  border-radius: 6px;
-  padding: 8px 12px;
+  border-radius: 5px;
+  padding: 6px 10px;
   margin: 2px 0;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -97,12 +96,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 6px 10px;
   margin: 2px 0;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .expandableNavItem:hover {
@@ -112,7 +111,7 @@
 .navItemContent {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .icon {
@@ -129,12 +128,12 @@
 }
 
 .subNavItem {
-  padding: 6px 12px 6px 32px;
+  padding: 5px 10px 5px 28px;
   margin: 2px 0;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .subNavItem:hover {
@@ -144,19 +143,19 @@
 .subNavItemActive {
   background-color: rgba(59, 130, 246, 0.1);
   border-radius: 4px;
-  padding: 6px 12px 6px 32px;
+  padding: 5px 10px 5px 28px;
   margin: 2px 0;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* Notification specific styles */
 .notificationItem {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0;
+  gap: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -165,9 +164,9 @@
 }
 
 .notificationIcon {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
   background-color: rgba(239, 68, 68, 0.1);
   display: flex;
   align-items: center;
@@ -181,13 +180,13 @@
 }
 
 .notificationText {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.4;
-  margin: 0 0 4px 0;
+  margin: 0 0 3px 0;
 }
 
 .notificationTime {
-  font-size: 12px;
+  font-size: 11px;
   opacity: 0.7;
   margin: 0;
 }
@@ -199,7 +198,7 @@
 
 .activityTimeline {
   position: absolute;
-  left: 16px;
+  left: 14px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -209,8 +208,8 @@
 .activityItem {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0 12px 24px;
+  gap: 10px;
+  padding: 10px 0 10px 20px;
   position: relative;
 }
 
@@ -222,11 +221,11 @@
 .contactItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
+  gap: 10px;
+  padding: 6px 0;
   cursor: pointer;
   transition: all 0.2s;
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 .contactItem:hover {
@@ -234,7 +233,7 @@
 }
 
 .contactName {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -242,11 +241,11 @@
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    max-width: 280px;
+    max-width: 252px;
   }
 
   .rightSidebar {
     width: 100%;
-    max-width: 280px;
+    max-width: 252px;
   }
 }

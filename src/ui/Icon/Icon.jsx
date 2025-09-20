@@ -12,6 +12,8 @@ import Filter from '../../assets/svg/Filter.svg?react';
 import User from '../../assets/svg/User.svg?react';
 import Clockwise from '../../assets/svg/Clockwise.svg?react';
 import Search from '../../assets/svg/Search.svg?react';
+import Bug from '../../assets/svg/Bug.svg?react';
+import Broadcast from '../../assets/svg/Broadcast.svg?react';
 
 // Icon mapping
 const iconComponents = {
@@ -28,6 +30,8 @@ const iconComponents = {
   user: User,
   clock: Clockwise,
   'chevron-right': ArrowRise,
+  bug: Bug,
+  broadcast: Broadcast,
 };
 
 const Icon = memo(
