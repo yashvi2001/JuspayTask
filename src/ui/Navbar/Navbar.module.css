@@ -79,7 +79,7 @@
   min-width: 16rem;
   height: 2.5rem;
   border-radius: 0.5rem;
-  padding: 0 1rem 0 2.5rem;
+  padding: 0 2.5rem 0 2.5rem;
   font-size: 0.875rem;
   outline: none;
   transition: all 0.2s ease;
@@ -93,6 +93,14 @@
   position: absolute;
   left: 0.75rem;
   pointer-events: none;
+}
+
+.searchShortcut {
+  position: absolute;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .rightSection {

@@ -66,6 +66,11 @@ const Navbar = ({
           </nav>
         )}
 
+        {/* Custom left content */}
+        {children?.left}
+      </div>
+
+      <div className={styles.rightSection}>
         {/* Search */}
         {showSearch && (
           <div className={styles.searchContainer}>
@@ -78,7 +83,7 @@ const Navbar = ({
               />
               <input
                 type="search"
-                placeholder="Search..."
+                placeholder="Search"
                 className={styles.searchInput}
                 style={{
                   backgroundColor: theme.background,
@@ -87,15 +92,16 @@ const Navbar = ({
                 }}
                 aria-label="Search"
               />
+              <span
+                className={styles.searchShortcut}
+                style={{ color: theme.textSecondary }}
+              >
+                ⌘/
+              </span>
             </div>
           </div>
         )}
 
-        {/* Custom left content */}
-        {children?.left}
-      </div>
-
-      <div className={styles.rightSection}>
         {/* Theme toggle */}
         {showThemeToggle && (
           <button
@@ -131,6 +137,18 @@ const Navbar = ({
             <Icon name="bell" size={18} />
           </button>
         )}
+
+        {/* Notebook icon */}
+        <button
+          className={styles.iconButton}
+          onClick={onNotificationClick}
+          aria-label={
+            rightSidebarOpen ? 'Close notifications' : 'Open notifications'
+          }
+          type="button"
+        >
+          <Icon name="menu" size={18} />
+        </button>
 
         {/* Custom right content */}
         {children?.right}

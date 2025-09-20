@@ -11,6 +11,7 @@ import Sidebar from '../../assets/svg/Sidebar.svg?react';
 import Filter from '../../assets/svg/Filter.svg?react';
 import User from '../../assets/svg/User.svg?react';
 import Clockwise from '../../assets/svg/Clockwise.svg?react';
+import Search from '../../assets/svg/Search.svg?react';
 
 // Icon mapping
 const iconComponents = {
@@ -20,8 +21,10 @@ const iconComponents = {
   bell: Notifications,
   home: ChartPie,
   'file-text': BookOpen,
+  notebook: BookOpen,
   menu: Sidebar,
-  search: Filter,
+  search: Search,
+  filter: Filter,
   user: User,
   clock: Clockwise,
   'chevron-right': ArrowRise,
