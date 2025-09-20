@@ -1,18 +1,30 @@
 import React, { memo } from 'react';
 
-// Lazy load SVG imports for better performance
+// Import SVGs as React components
+import ArrowRise from '../../assets/svg/ArrowRise.svg?react';
+import ArrowFall from '../../assets/svg/ArrowFall.svg?react';
+import Sun from '../../assets/svg/Sun.svg?react';
+import Notifications from '../../assets/svg/Notifications.svg?react';
+import ChartPie from '../../assets/svg/ChartPie.svg?react';
+import BookOpen from '../../assets/svg/BookOpen.svg?react';
+import Sidebar from '../../assets/svg/Sidebar.svg?react';
+import Filter from '../../assets/svg/Filter.svg?react';
+import User from '../../assets/svg/User.svg?react';
+import Clockwise from '../../assets/svg/Clockwise.svg?react';
+
+// Icon mapping
 const iconComponents = {
-  'trending-up': () => import('../../assets/svg/ArrowRise.svg?react'),
-  'trending-down': () => import('../../assets/svg/ArrowFall.svg?react'),
-  sun: () => import('../../assets/svg/Sun.svg?react'),
-  bell: () => import('../../assets/svg/Notifications.svg?react'),
-  home: () => import('../../assets/svg/ChartPie.svg?react'),
-  'file-text': () => import('../../assets/svg/BookOpen.svg?react'),
-  menu: () => import('../../assets/svg/Sidebar.svg?react'),
-  search: () => import('../../assets/svg/Filter.svg?react'),
-  user: () => import('../../assets/svg/User.svg?react'),
-  clock: () => import('../../assets/svg/Clockwise.svg?react'),
-  'chevron-right': () => import('../../assets/svg/ArrowRise.svg?react'),
+  'trending-up': ArrowRise,
+  'trending-down': ArrowFall,
+  sun: Sun,
+  bell: Notifications,
+  home: ChartPie,
+  'file-text': BookOpen,
+  menu: Sidebar,
+  search: Filter,
+  user: User,
+  clock: Clockwise,
+  'chevron-right': ArrowRise,
 };
 
 const Icon = memo(
@@ -24,28 +36,9 @@ const Icon = memo(
     'aria-hidden': ariaHidden = true,
     ...props
   }) => {
-    const [IconComponent, setIconComponent] = React.useState(null);
-    const [error, setError] = React.useState(false);
+    const IconComponent = iconComponents[name];
 
-    React.useEffect(() => {
-      const loadIcon = async () => {
-        try {
-          if (iconComponents[name]) {
-            const module = await iconComponents[name]();
-            setIconComponent(() => module.default || module);
-          } else {
-            setError(true);
-          }
-        } catch (err) {
-          console.warn(`Failed to load icon: ${name}`, err);
-          setError(true);
-        }
-      };
-
-      loadIcon();
-    }, [name]);
-
-    if (error || !IconComponent) {
+    if (!IconComponent) {
       // Fallback to a simple SVG for missing icons
       return (
         <svg
