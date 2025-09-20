@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -43,7 +44,7 @@
     "*.{json,css,scss,md}": [
       "prettier --write"
     ],
-    "*.{html}": [
+    "*.html": [
       "prettier --write"
     ]
   }
