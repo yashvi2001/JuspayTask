@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTheme } from '../../theme';
 import Icon from '../Icon';
 import styles from './Navbar.module.css';
@@ -18,6 +18,7 @@ const Navbar = ({
   children,
 }) => {
   const { theme, toggleTheme, isDark } = useTheme();
+  const searchInputRef = useRef(null);
 
   const handleBreadcrumbClick = index => {
     if (onBreadcrumbClick) {
@@ -39,6 +40,22 @@ const Navbar = ({
       onBreadcrumbClick('orders');
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if ((event.metaKey || event.ctrlKey) && event.key === '/') {
+        event.preventDefault();
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <header
@@ -125,6 +142,7 @@ const Navbar = ({
                 style={{ color: theme.textSecondary }}
               />
               <input
+                ref={searchInputRef}
                 type="search"
                 placeholder="Search"
                 className={styles.searchInput}

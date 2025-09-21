@@ -25,7 +25,7 @@
 - **Dynamic Sidebar**: Expandable navigation with sections for Dashboards, Pages, and User Profile
 - **Breadcrumb Navigation**: Clear page hierarchy with clickable breadcrumbs
 - **Multi-page Support**: Dashboard and Orders pages with lazy loading for performance
-- **Search Functionality**: Built-in search capability in the header
+- **Search Functionality**: Built-in search capability in the header with keyboard shortcut (⌘/ or Ctrl+/)
 
 ### 🔔 **Notifications System**
 
