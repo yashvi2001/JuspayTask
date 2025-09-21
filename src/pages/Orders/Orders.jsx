@@ -3,6 +3,7 @@ import { useTheme } from '../../theme';
 import Icon from '../../ui/Icon';
 import styles from './Orders.module.css';
 import ordersData from '../../data/orders.json';
+import { getImageSrc } from '../../ui/Avatar/images';
 
 const OrderRow = React.memo(
   ({ order, isSelected, onSelect, theme, isDark, onCopyAddress }) => (
@@ -40,7 +41,7 @@ const OrderRow = React.memo(
       <td className={styles.cell}>
         <div className={styles.userCell}>
           <img
-            src={order.user.avatar}
+            src={getImageSrc(order.user.avatar)}
             alt={order.user.name}
             className={styles.avatar}
           />

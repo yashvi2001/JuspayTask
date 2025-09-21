@@ -240,7 +240,7 @@
   ],
   "sidebar": {
     "logo": {
-      "src": "/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png",
+      "src": "logo-placeholder",
       "alt": "ByeWind Logo",
       "text": "ByeWind"
     },

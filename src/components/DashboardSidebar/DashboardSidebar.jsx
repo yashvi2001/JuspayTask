@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Icon from '../../ui/Icon';
 import Sidebar from '../../ui/Sidebar';
 import styles from './DashboardSidebar.module.css';
+import logoImage from '../../assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png';
 
 // Main navigation sidebar component matching Figma design exactly
 const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
@@ -31,7 +32,7 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
       <div className={styles.logo}>
         <div className={styles.logoIcon}>
           <img
-            src="/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png"
+            src={logoImage}
             alt="ByeWind Logo"
             style={{
               width: '100%',
