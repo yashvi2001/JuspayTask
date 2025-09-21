@@ -1,5 +1,6 @@
 .ordersContainer {
   padding: 20px;
+  min-height: 100vh;
 }
 
 .header {
@@ -77,6 +78,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
 }
 
 .columnHeader {
@@ -86,24 +88,26 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .checkboxColumn {
-  width: 32px;
+  width: 40px;
   padding: 12px 6px;
 }
 
 .actionColumn {
-  width: 32px;
+  width: 40px;
   padding: 12px 6px;
 }
 
 .tableRow {
-  /* Clean table row without hover effects */
+  transition: background-color 0.2s ease;
 }
 
 .selectedRow {
-  /* No additional background color when selected */
+  background-color: transparent;
 }
 
 .checkboxCell {
@@ -132,6 +136,9 @@
 .cell {
   padding: 10px;
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .userCell {
@@ -145,6 +152,7 @@
   height: 26px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .addressCell {
@@ -180,6 +188,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .actionCell {
@@ -201,9 +210,15 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .pagination {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 6px;
 }
@@ -251,4 +266,106 @@
 .activePage {
   background-color: currentColor;
   color: white;
+}
+
+/* Filter dropdown styles */
+.filterContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.filterDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  border-radius: 6px;
+  padding: 4px 0;
+  min-width: 140px;
+  z-index: 9999 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filterOption {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filterOption:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sortable header styles */
+.sortableHeader {
+  user-select: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.headerContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortableHeader:hover {
+  opacity: 0.8;
+}
+
+/* Pagination info styles */
+.paginationInfo {
+  font-size: 12px;
+}
+
+/* Disabled pagination button styles */
+.paginationButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.paginationButton:disabled:hover {
+  background-color: transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .leftActions {
+    justify-content: center;
+  }
+
+  .searchContainer {
+    justify-content: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .table {
+    font-size: 11px;
+  }
+
+  .cell {
+    padding: 8px 6px;
+  }
+
+  .columnHeader {
+    padding: 10px 6px;
+    font-size: 9px;
+  }
 }

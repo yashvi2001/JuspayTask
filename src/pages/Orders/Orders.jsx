@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTheme } from '../../theme';
 import Icon from '../../ui/Icon';
 import styles from './Orders.module.css';
 import ordersData from '../../data/orders.json';
 import { getImageSrc } from '../../ui/Avatar/images';
+import { useTableOperations } from '../../hooks';
 
 const OrderRow = React.memo(
   ({ order, isSelected, onSelect, theme, isDark, onCopyAddress }) => (
@@ -96,9 +97,21 @@ const OrderRow = React.memo(
 const Orders = () => {
   const { theme, isDark } = useTheme();
   const [selectedRows, setSelectedRows] = useState(new Set(['CM9804']));
+  const [showFilters, setShowFilters] = useState(false);
 
   // Get orders data from JSON file
   const orders = ordersData.orders;
+
+  // Use table operations hook
+  const tableOps = useTableOperations({
+    data: orders,
+    searchFields: ['id', 'user.name', 'project', 'address', 'status.text'],
+    filterField: 'status.text',
+    itemsPerPage: 5,
+    initialSort: { key: null, direction: 'asc' },
+    initialFilter: 'all',
+    initialSearch: '',
+  });
 
   const handleRowSelect = useCallback(orderId => {
     setSelectedRows(prev => {
@@ -134,6 +147,15 @@ const Orders = () => {
     }
   }, []);
 
+  // Handle filter dropdown
+  const handleStatusFilter = useCallback(
+    status => {
+      tableOps.filter.handle(status);
+      setShowFilters(false);
+    },
+    [tableOps.filter]
+  );
+
   return (
     <div
       className={styles.ordersContainer}
@@ -156,18 +178,51 @@ const Orders = () => {
             >
               <Icon name="add" size={16} />
             </button>
+            <div className={styles.filterContainer}>
+              <button
+                className={styles.actionButton}
+                onClick={() => setShowFilters(!showFilters)}
+                style={{
+                  backgroundColor: theme.cardBackground,
+                  border: `1px solid ${theme.border}`,
+                  color: theme.text,
+                }}
+              >
+                <Icon name="filter" size={16} />
+              </button>
+              {showFilters && (
+                <div
+                  className={styles.filterDropdown}
+                  style={{
+                    backgroundColor: isDark ? '#2a2a2a' : '#ffffff',
+                    border: `1px solid ${theme.border}`,
+                    boxShadow: isDark
+                      ? '0 4px 12px rgba(0,0,0,0.5)'
+                      : '0 4px 12px rgba(0,0,0,0.1)',
+                  }}
+                >
+                  {tableOps.filter.available.map(status => (
+                    <button
+                      key={status}
+                      className={styles.filterOption}
+                      onClick={() => handleStatusFilter(status)}
+                      style={{
+                        color: theme.text,
+                        backgroundColor:
+                          tableOps.filter.active === status
+                            ? theme.border
+                            : 'transparent',
+                      }}
+                    >
+                      {status === 'all' ? 'All Status' : status}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button
               className={styles.actionButton}
-              style={{
-                backgroundColor: theme.cardBackground,
-                border: `1px solid ${theme.border}`,
-                color: theme.text,
-              }}
-            >
-              <Icon name="filter" size={16} />
-            </button>
-            <button
-              className={styles.actionButton}
+              onClick={() => setShowFilters(false)}
               style={{
                 backgroundColor: theme.cardBackground,
                 border: `1px solid ${theme.border}`,
@@ -193,8 +248,10 @@ const Orders = () => {
               />
               <input
                 type="search"
-                placeholder="Search"
+                placeholder="Search orders..."
                 className={styles.searchInput}
+                value={tableOps.search.term}
+                onChange={tableOps.search.handle}
                 style={{ color: theme.text }}
               />
             </div>
@@ -213,46 +270,106 @@ const Orders = () => {
             <tr style={{ borderBottom: `1px solid ${theme.border}` }}>
               <th className={styles.checkboxColumn}></th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('id')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                Order ID
+                <span className={styles.headerContent}>
+                  ORDER ID
+                  {tableOps.sort.isSortedBy('id') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('id')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('user')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                User
+                <span className={styles.headerContent}>
+                  USER
+                  {tableOps.sort.isSortedBy('user') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('user')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('project')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                Project
+                <span className={styles.headerContent}>
+                  PROJECT
+                  {tableOps.sort.isSortedBy('project') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('user')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('address')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                Address
+                <span className={styles.headerContent}>
+                  ADDRESS
+                  {tableOps.sort.isSortedBy('address') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('user')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('date')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                Date
+                <span className={styles.headerContent}>
+                  DATE
+                  {tableOps.sort.isSortedBy('date') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('user')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th
-                className={styles.columnHeader}
-                style={{ color: theme.textSecondary }}
+                className={`${styles.columnHeader} ${styles.sortableHeader}`}
+                onClick={() => tableOps.sort.handle('status')}
+                style={{ color: theme.textSecondary, cursor: 'pointer' }}
               >
-                Status
+                <span className={styles.headerContent}>
+                  STATUS
+                  {tableOps.sort.isSortedBy('status') && (
+                    <Icon
+                      name={tableOps.sort.getIcon('user')}
+                      size={12}
+                      style={{ marginLeft: '4px' }}
+                    />
+                  )}
+                </span>
               </th>
               <th className={styles.actionColumn}></th>
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (
+            {tableOps.data.map(order => (
               <OrderRow
                 key={order.id}
                 order={order}
@@ -267,37 +384,69 @@ const Orders = () => {
         </table>
       </div>
 
-      <div className={styles.pagination}>
-        <button
-          className={styles.paginationButton}
+      <div className={styles.footer}>
+        <div
+          className={styles.paginationInfo}
           style={{ color: theme.textSecondary }}
         >
-          <Icon name="arrow-left" size={16} />
-        </button>
-        <div className={styles.pageNumbers}>
-          {useMemo(
-            () =>
-              [1, 2, 3, 4, 5].map(page => (
-                <button
-                  key={page}
-                  className={`${styles.pageButton} ${page === 1 ? styles.activePage : ''}`}
-                  style={{
-                    backgroundColor: page === 1 ? theme.text : 'transparent',
-                    color: page === 1 ? theme.background : theme.text,
-                  }}
-                >
-                  {page}
-                </button>
-              )),
-            [theme]
-          )}
+          Showing {tableOps.pagination.getInfo().startItem} to{' '}
+          {tableOps.pagination.getInfo().endItem} of{' '}
+          {tableOps.pagination.totalItems} orders
         </div>
-        <button
-          className={styles.paginationButton}
-          style={{ color: theme.textSecondary }}
-        >
-          <Icon name="arrow-right" size={16} />
-        </button>
+
+        <div className={styles.pagination}>
+          <button
+            className={styles.paginationButton}
+            onClick={tableOps.pagination.goPrevious}
+            disabled={!tableOps.pagination.canGoPrevious}
+            style={{
+              color: !tableOps.pagination.canGoPrevious
+                ? theme.border
+                : theme.textSecondary,
+              cursor: !tableOps.pagination.canGoPrevious
+                ? 'not-allowed'
+                : 'pointer',
+            }}
+          >
+            <Icon name="arrow-left" size={16} />
+          </button>
+          <div className={styles.pageNumbers}>
+            {tableOps.pagination.getVisiblePages().map(page => (
+              <button
+                key={page}
+                className={`${styles.pageButton} ${page === tableOps.pagination.currentPage ? styles.activePage : ''}`}
+                onClick={() => tableOps.pagination.handlePageChange(page)}
+                style={{
+                  backgroundColor:
+                    page === tableOps.pagination.currentPage
+                      ? theme.text
+                      : 'transparent',
+                  color:
+                    page === tableOps.pagination.currentPage
+                      ? theme.background
+                      : theme.text,
+                }}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+          <button
+            className={styles.paginationButton}
+            onClick={tableOps.pagination.goNext}
+            disabled={!tableOps.pagination.canGoNext}
+            style={{
+              color: !tableOps.pagination.canGoNext
+                ? theme.border
+                : theme.textSecondary,
+              cursor: !tableOps.pagination.canGoNext
+                ? 'not-allowed'
+                : 'pointer',
+            }}
+          >
+            <Icon name="arrow-right" size={16} />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -199,6 +199,42 @@ const ArrowRight = ({ width = 16, height = 16, ...props }) => (
   </svg>
 );
 
+// Custom Arrow Up icon for sorting
+const ArrowUp = ({ width = 16, height = 16, ...props }) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <line x1="12" y1="19" x2="12" y2="5" />
+    <polyline points="5,12 12,5 19,12" />
+  </svg>
+);
+
+// Custom Arrow Down icon for sorting
+const ArrowDown = ({ width = 16, height = 16, ...props }) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <polyline points="5,12 12,19 19,12" />
+  </svg>
+);
+
 // Icon mapping with optimized WorldMap
 const iconComponents = {
   'trending-up': ArrowRise,
@@ -231,6 +267,8 @@ const iconComponents = {
   date: Date,
   'arrow-left': ArrowLeft,
   'arrow-right': ArrowRight,
+  'arrow-up': ArrowUp,
+  'arrow-down': ArrowDown,
 };
 
 const Icon = memo(

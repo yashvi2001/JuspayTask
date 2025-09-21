@@ -10,7 +10,7 @@ import { useState, useCallback } from 'react';
  * @example
  * const [isOpen, toggleOpen, openModal, closeModal] = useToggle(false);
  */
-export const useToggle = (initialValue = false) => {
+const useToggle = (initialValue = false) => {
   const [value, setValue] = useState(initialValue);
 
   const toggle = useCallback(() => {
@@ -27,3 +27,5 @@ export const useToggle = (initialValue = false) => {
 
   return [value, toggle, setTrue, setFalse];
 };
+
+export default useToggle;
