@@ -16,11 +16,18 @@ export const ThemeProvider = ({
 
   const theme = themes[currentTheme];
 
-  // Set CSS custom properties when theme changes
+  // Set CSS custom properties and theme class when theme changes
   useEffect(() => {
     const root = document.documentElement;
+    const body = document.body;
+
+    // Set CSS custom properties
     root.style.setProperty('--body-background', theme.bodyBackground);
-  }, [theme]);
+
+    // Add/remove theme classes
+    body.classList.remove('light', 'dark');
+    body.classList.add(currentTheme);
+  }, [theme, currentTheme]);
 
   const value = useMemo(
     () => ({

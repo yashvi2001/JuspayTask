@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 0;
-  margin-bottom: 12px;
+  padding: 6px 0;
+  margin-bottom: 14px;
 }
 
 .logoIcon {
@@ -17,23 +17,24 @@
 }
 
 .logoText {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .topSections {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 16px;
   align-items: flex-start;
+  padding-left: 14px;
 }
 
 .favoritesSection {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -41,50 +42,50 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-bottom: 10px;
+  gap: 2px;
+  margin-bottom: 14px;
 }
 
 .sectionTitle {
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.3px;
   padding: 0;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
 }
 
 .navItem {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 1px 0;
+  gap: 8px;
+  padding: 3px 0;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 22px;
 }
 
 .expandableNavItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 6px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
-  margin-bottom: 0;
+  line-height: 20px;
+  margin-bottom: 2px;
 }
 
 .expandableNavItem:hover {
@@ -113,8 +114,8 @@
 }
 
 .dot {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   flex-shrink: 0;
   background-color: #9ca3af;
@@ -124,23 +125,23 @@
   padding-left: 10px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-top: 3px;
+  gap: 1px;
+  margin-top: 4px;
 }
 
 .subNavItem {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 20px;
   padding-left: 14px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .subNavItem:hover {
@@ -151,33 +152,33 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 20px;
   padding-left: 14px;
   background-color: rgba(255, 255, 255, 0.12);
   border-left: 3px solid #8b5cf6;
   margin-left: -3px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .subNavExpandable {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 20px;
   padding-left: 14px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .subNavExpandable:hover {
@@ -207,27 +208,23 @@
   padding-left: 37px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-top: 2px;
+  gap: 1px;
+  margin-top: 3px;
 }
 
 .subSubNavItem {
-  padding: 2px 10px;
+  padding: 3px 10px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 16px;
-  margin-bottom: 1px;
+  line-height: 18px;
+  margin-bottom: 2px;
 }
 
 .subSubNavItem:hover {
   background-color: rgba(255, 255, 255, 0.08);
-}
-
-.mainNavigation {
-  flex: 1;
 }
 
 /* Mobile styles */
@@ -240,43 +237,55 @@
 
 /* Light theme overrides */
 :global(.light) .logoText {
-  color: #1e293b;
+  color: #1c1c1c;
 }
 
-:global(.light) .sectionTitle {
-  color: rgba(30, 41, 59, 0.6);
+.favoritesSection .sectionTitle {
+  color: #9ca3af;
+}
+
+.recentlySection .sectionTitle {
+  color: #d1d5db;
+}
+
+:global(.light) .favoritesSection .sectionTitle {
+  color: #9ca3af;
+}
+
+:global(.light) .recentlySection .sectionTitle {
+  color: #d1d5db;
 }
 
 :global(.light) .navItem {
-  color: #1e293b;
+  color: #1c1c1c;
 }
 
 :global(.light) .expandableNavItem {
-  color: rgba(30, 41, 59, 0.6);
+  color: #6b7280;
 }
 
 :global(.light) .subNavItem {
-  color: rgba(30, 41, 59, 0.6);
+  color: #1c1c1c;
 }
 
 :global(.light) .subSubNavItem {
-  color: rgba(30, 41, 59, 0.6);
+  color: #1c1c1c;
 }
 
 :global(.light) .icon,
 :global(.light) .chevronIcon,
 :global(.light) .subNavIcon,
 :global(.light) .subChevronIcon {
-  color: rgba(30, 41, 59, 0.6);
+  color: #1c1c1c;
 }
 
 :global(.light) .dot {
-  background-color: rgba(30, 41, 59, 0.6);
+  background-color: #9ca3af;
 }
 
 :global(.light) .subNavItemActive {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: #1e293b;
+  background-color: #1c1c1c0d;
+  color: #1c1c1c;
 }
 
 :global(.light) .navItem:hover,
@@ -285,7 +294,7 @@
 :global(.light) .subNavExpandable:hover,
 :global(.light) .subSubNavItem:hover {
   background-color: rgba(59, 130, 246, 0.05);
-  color: #1e293b;
+  color: #1c1c1c;
 }
 
 /* Dark theme overrides */
@@ -299,4 +308,7 @@
 
 :global(.dark) .subNavItemActive {
   background-color: rgba(255, 255, 255, 0.12);
+}
+:global(.light) .subNavItemActive {
+  border-left: 3px solid #1c1c1c;
 }

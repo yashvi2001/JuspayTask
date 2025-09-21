@@ -156,20 +156,11 @@
   background-color: rgba(255, 255, 255, 0.942) !important;
 }
 
-:global(.dark) .activityAvatar {
-  background-color: #374151;
-}
-
 /* Light theme adjustments */
 :global(.light) .notificationIcon {
   background-color: #fef2f2;
-  color: #dc2626;
 }
 
 :global(.light) .timelineSegment {
   background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-:global(.light) .activityAvatar {
-  background-color: #f3f4f6;
 }
