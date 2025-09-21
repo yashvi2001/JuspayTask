@@ -14,14 +14,14 @@ const Dashboard = () => {
     <div className={styles.main}>
       <h1 className={styles.pageTitle}>eCommerce</h1>
 
-      {/* Main Content - Side by Side Layout */}
+      {/* Main Content - KPI Cards and Chart */}
       <div className={styles.mainContent}>
-        {/* Left Side - KPI Cards */}
+        {/* KPI Cards - Full Width */}
         <div className={styles.leftSection}>
           <KPICards />
         </div>
 
-        {/* Right Side - Chart */}
+        {/* Chart Section */}
         <div className={styles.rightSection}>
           <ProjectionsChart />
         </div>

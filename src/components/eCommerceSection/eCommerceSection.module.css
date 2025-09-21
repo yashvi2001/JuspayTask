@@ -1,9 +1,9 @@
 /* eCommerce Section Styles */
 .kpiGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
   height: 100%;
 }
 
@@ -12,7 +12,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   position: relative;
   min-width: 0;
   transition: all 0.2s ease;
@@ -29,12 +29,14 @@
   font-size: 13px;
   font-weight: 500;
   margin: 0;
+  color: #6b7280;
 }
 
 .cardValue {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 3px 0;
+  margin: 4px 0;
+  line-height: 1.2;
 }
 
 .positiveChange {
@@ -43,7 +45,7 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   color: #10b981;
 }
 
@@ -53,13 +55,13 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   color: #6b7280;
 }
 
 .chartCard {
   border-radius: 14px;
-  padding: 20px;
+  padding: 24px;
   min-width: 0;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -97,6 +99,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     height: 120px;
+    gap: 12px;
   }
 }
 
@@ -109,11 +112,11 @@
   }
 
   .kpiCard {
-    padding: 14px;
+    padding: 16px;
   }
 
   .chartCard {
-    padding: 14px;
+    padding: 16px;
   }
 
   .chartWrapper {
@@ -129,6 +132,6 @@
   }
 
   .cardValue {
-    font-size: 18px;
+    font-size: 20px;
   }
 }

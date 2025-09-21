@@ -1,29 +1,30 @@
 .header {
-  height: 58px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.2rem;
+  padding: 0 24px;
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
   flex: 1;
   min-width: 0;
 }
 
 .iconButton {
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 0.3rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,31 +52,38 @@
 .breadcrumbList {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 8px;
   list-style: none;
-  font-size: 0.7rem;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .breadcrumbList li:not(:last-child)::after {
   content: '/';
-  margin-left: 0.3rem;
+  margin-left: 8px;
   color: inherit;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .breadcrumbItem {
   transition: all 0.2s ease;
-  padding: 0.2rem 0.3rem;
-  border-radius: 0.2rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #6b7280;
 }
 
 .breadcrumbItem:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.breadcrumbList li:last-child .breadcrumbItem {
+  color: #111827;
+  font-weight: 600;
+}
+
 .searchContainer {
   flex: 0 0 auto;
-  max-width: 14rem;
+  max-width: 280px;
 }
 
 .searchWrapper {
@@ -86,48 +94,54 @@
 
 .searchInput {
   width: 100%;
-  min-width: 11rem;
-  height: 1.8rem;
-  border-radius: 0.4rem;
-  padding: 0 1.8rem 0 1.8rem;
-  font-size: 0.7rem;
+  min-width: 240px;
+  height: 36px;
+  border-radius: 8px;
+  padding: 0 40px 0 36px;
+  font-size: 14px;
   outline: none;
   transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .searchInput:focus {
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
 }
 
 .searchIcon {
   position: absolute;
-  left: 0.5rem;
+  left: 12px;
   pointer-events: none;
 }
 
 .searchShortcut {
   position: absolute;
-  right: 0.5rem;
-  font-size: 0.6rem;
+  right: 12px;
+  font-size: 12px;
   pointer-events: none;
   opacity: 0.6;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .rightSection {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .header {
-    padding: 0 0.8rem;
+    padding: 0 16px;
+    height: 56px;
   }
 
   .leftSection {
-    gap: 0.8rem;
+    gap: 12px;
   }
 
   .breadcrumb {
@@ -139,22 +153,22 @@
   }
 
   .rightSection {
-    gap: 0.2rem;
+    gap: 4px;
   }
 
   .iconButton {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 28px;
+    height: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 0 0.6rem;
+    padding: 0 12px;
   }
 
   .leftSection {
-    gap: 0.6rem;
+    gap: 8px;
   }
 }
 
@@ -165,6 +179,18 @@
 
 :global(.dark) .breadcrumbItem:hover {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(.dark) .breadcrumbList li:last-child .breadcrumbItem {
+  color: #f9fafb;
+}
+
+:global(.dark) .searchInput {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .searchShortcut {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* High contrast mode */

@@ -9,9 +9,15 @@
   left: 0;
   top: 0;
   z-index: 1000;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: transform 0.3s ease;
   background-color: #1a1a1a; /* This will be overridden by theme classes */
+
+  /* Prevent sidebar from interfering with main scroll */
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .logo {

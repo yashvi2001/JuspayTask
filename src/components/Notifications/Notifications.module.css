@@ -9,9 +9,15 @@
   right: 0;
   top: 0;
   z-index: 1000;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: transform 0.3s ease;
   border-left: 2px solid #3b82f6;
+
+  /* Prevent sidebar from interfering with main scroll */
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .section {

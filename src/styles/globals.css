@@ -20,6 +20,8 @@ html {
   /* Better text rendering */
   text-rendering: optimizeLegibility;
   background-color: var(--body-background);
+  /* Smooth scrolling for the entire page */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -44,6 +46,10 @@ body {
 
   /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
+
+  /* GPU acceleration for smoother scrolling */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 #root {
@@ -54,7 +60,7 @@ body {
   background-color: var(--body-background);
 }
 
-/* Smooth transitions for theme changes */
+/* Smooth transitions for theme changes and scroll optimization */
 * {
   -webkit-transition:
     background-color 0.3s ease,
@@ -68,6 +74,12 @@ body {
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease;
+
+  /* Hardware acceleration for smoother rendering */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 /* Typography improvements */

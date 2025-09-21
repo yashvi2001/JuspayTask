@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  min-height: 100vh;
+  /* Remove min-height constraint to prevent dual scroll */
   position: relative;
   transition: all 0.3s ease;
 }
@@ -13,6 +13,9 @@
   transition:
     margin-left 0.3s ease,
     margin-right 0.3s ease;
+
+  /* Remove overflow from container - let body handle scrolling */
+  overflow: visible;
 }
 
 /* When both sidebars are open */
