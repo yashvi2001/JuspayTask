@@ -4,7 +4,7 @@ import Icon from '../../ui/Icon';
 import Sidebar from '../../ui/Sidebar';
 import styles from './DashboardSidebar.module.css';
 import logoImage from '../../assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png';
-
+import { useTheme } from '../../theme';
 // Main navigation sidebar component
 const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
   const [expandedSections, setExpandedSections] = useState({
@@ -33,6 +33,7 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
     }
   };
 
+  const { isDark } = useTheme();
   return (
     <Sidebar type="left" isOpen={isOpen} onClose={onClose}>
       {/* Logo Section */}
@@ -96,7 +97,7 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
                 style={{
                   width: '4px',
                   height: '20px',
-                  backgroundColor: '#8b5cf6',
+                  backgroundColor: isDark ? '#8b5cf6' : '#1c1c1c',
                   position: 'absolute',
                   left: '0',
                   top: '50%',
