@@ -1,10 +1,11 @@
 /* eCommerce Section Styles */
 .kpiGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 8px;
   height: 100%;
+  width: 100%;
 }
 
 .kpiCard {
@@ -19,6 +20,7 @@
   transition: all 0.2s ease;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .kpiCard:hover {
@@ -115,12 +117,14 @@
   border-radius: 8px;
   padding: 20px 16px 16px 16px;
   min-width: 0;
+  max-width: 100%;
   overflow: hidden;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .chartTitle {
@@ -133,8 +137,10 @@
 .chartWrapper {
   flex: 1;
   width: 100%;
+  max-width: 100%;
   height: 240px;
   position: relative;
+  overflow: hidden;
 }
 
 /* Dark theme overrides */
@@ -149,7 +155,7 @@
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .kpiGrid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     height: 120px;
     gap: 12px;
@@ -158,7 +164,7 @@
 
 @media (max-width: 768px) {
   .kpiGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 14px;
     height: 200px;

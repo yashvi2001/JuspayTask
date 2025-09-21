@@ -4,81 +4,96 @@ import Icon from '../../ui/Icon';
 import styles from './Orders.module.css';
 import ordersData from '../../data/orders.json';
 
-const OrderRow = React.memo(({ order, isSelected, onSelect, theme }) => (
-  <tr
-    className={`${styles.tableRow} ${isSelected ? styles.selectedRow : ''}`}
-    style={{
-      backgroundColor: isSelected ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
-      borderBottom: `1px solid ${theme.border}`,
-    }}
-  >
-    <td className={styles.checkboxCell}>
-      <button
-        className={styles.checkbox}
-        onClick={() => onSelect(order.id)}
-        style={{ color: theme.text }}
-      >
-        {isSelected ? '✓' : ''}
-      </button>
-    </td>
-    <td className={styles.cell} style={{ color: theme.text }}>
-      #{order.id}
-    </td>
-    <td className={styles.cell}>
-      <div className={styles.userCell}>
-        <img
-          src={order.user.avatar}
-          alt={order.user.name}
-          className={styles.avatar}
-        />
-        <span style={{ color: theme.text }}>{order.user.name}</span>
-      </div>
-    </td>
-    <td className={styles.cell} style={{ color: theme.text }}>
-      {order.project}
-    </td>
-    <td className={styles.cell}>
-      <div className={styles.addressCell}>
-        <span style={{ color: theme.text }}>{order.address}</span>
-        {order.id === 'CM9805' && (
-          <Icon
-            name="document"
-            size={14}
-            style={{ color: theme.textSecondary }}
-          />
-        )}
-      </div>
-    </td>
-    <td className={styles.cell}>
-      <div className={styles.dateCell}>
-        <Icon name="date" size={14} style={{ color: theme.textSecondary }} />
-        <span style={{ color: theme.text }}>{order.date}</span>
-      </div>
-    </td>
-    <td className={styles.cell}>
-      <div className={styles.statusCell}>
-        <div
-          className={styles.statusDot}
-          style={{ backgroundColor: order.status.color }}
-        ></div>
-        <span style={{ color: theme.text }}>{order.status.text}</span>
-      </div>
-    </td>
-    <td className={styles.actionCell}>
-      {order.status.text === 'Rejected' && (
+const OrderRow = React.memo(
+  ({ order, isSelected, onSelect, theme, isDark, onCopyAddress }) => (
+    <tr
+      className={`${styles.tableRow} ${isSelected ? styles.selectedRow : ''}`}
+      style={{
+        backgroundColor: 'transparent',
+        borderBottom: `1px solid ${theme.border}`,
+      }}
+    >
+      <td className={styles.checkboxCell}>
         <button
-          className={styles.moreButton}
-          style={{ color: theme.textSecondary }}
+          className={`${styles.checkbox} ${isSelected ? styles.checkboxSelected : ''}`}
+          onClick={() => onSelect(order.id)}
+          style={{
+            borderColor: isSelected
+              ? isDark
+                ? '#c6c7f8'
+                : '#1c1c1c'
+              : theme.textSecondary,
+            backgroundColor: isSelected
+              ? isDark
+                ? '#c6c7f8'
+                : '#1c1c1c'
+              : 'transparent',
+            color: isSelected ? '#ffffff' : 'transparent',
+          }}
         >
-          ⋯
+          {isSelected ? '✓' : ''}
         </button>
-      )}
-    </td>
-  </tr>
-));
+      </td>
+      <td className={styles.cell} style={{ color: theme.text }}>
+        #{order.id}
+      </td>
+      <td className={styles.cell}>
+        <div className={styles.userCell}>
+          <img
+            src={order.user.avatar}
+            alt={order.user.name}
+            className={styles.avatar}
+          />
+          <span style={{ color: theme.text }}>{order.user.name}</span>
+        </div>
+      </td>
+      <td className={styles.cell} style={{ color: theme.text }}>
+        {order.project}
+      </td>
+      <td className={styles.cell}>
+        <div className={styles.addressCell}>
+          <span style={{ color: theme.text }}>{order.address}</span>
+          {order.id === 'CM9805' && (
+            <Icon
+              onClick={() => onCopyAddress(order.address)}
+              name="copy"
+              size={14}
+              style={{ color: theme.textSecondary }}
+            />
+          )}
+        </div>
+      </td>
+      <td className={styles.cell}>
+        <div className={styles.dateCell}>
+          <Icon name="date" size={14} style={{ color: theme.textSecondary }} />
+          <span style={{ color: theme.text }}>{order.date}</span>
+        </div>
+      </td>
+      <td className={styles.cell}>
+        <div className={styles.statusCell}>
+          <div
+            className={styles.statusDot}
+            style={{ backgroundColor: order.status.color }}
+          ></div>
+          <span style={{ color: theme.text }}>{order.status.text}</span>
+        </div>
+      </td>
+      <td className={styles.actionCell}>
+        {order.status.text === 'Rejected' && (
+          <button
+            className={styles.moreButton}
+            style={{ color: theme.textSecondary }}
+          >
+            ⋯
+          </button>
+        )}
+      </td>
+    </tr>
+  )
+);
 
 const Orders = () => {
-  const { theme } = useTheme();
+  const { theme, isDark } = useTheme();
   const [selectedRows, setSelectedRows] = useState(new Set(['CM9804']));
 
   // Get orders data from JSON file
@@ -101,6 +116,23 @@ const Orders = () => {
     [selectedRows]
   );
 
+  const handleCopyAddress = useCallback(async address => {
+    try {
+      await navigator.clipboard.writeText(address);
+      // Optional: Add toast notification here
+      console.log('Address copied to clipboard:', address);
+    } catch (err) {
+      console.error('Failed to copy address:', err);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = address;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    }
+  }, []);
+
   return (
     <div
       className={styles.ordersContainer}
@@ -118,6 +150,7 @@ const Orders = () => {
               style={{
                 backgroundColor: theme.cardBackground,
                 border: `1px solid ${theme.border}`,
+                color: theme.text,
               }}
             >
               <Icon name="add" size={16} />
@@ -127,6 +160,7 @@ const Orders = () => {
               style={{
                 backgroundColor: theme.cardBackground,
                 border: `1px solid ${theme.border}`,
+                color: theme.text,
               }}
             >
               <Icon name="filter" size={16} />
@@ -136,6 +170,7 @@ const Orders = () => {
               style={{
                 backgroundColor: theme.cardBackground,
                 border: `1px solid ${theme.border}`,
+                color: theme.text,
               }}
             >
               <Icon name="sort" size={16} />
@@ -169,8 +204,7 @@ const Orders = () => {
       <div
         className={styles.tableContainer}
         style={{
-          backgroundColor: theme.cardBackground,
-          border: `1px solid ${theme.border}`,
+          backgroundColor: isDark ? '#1c1c1c' : theme.cardBackground,
         }}
       >
         <table className={styles.table}>
@@ -224,6 +258,8 @@ const Orders = () => {
                 isSelected={isRowSelected(order.id)}
                 onSelect={handleRowSelect}
                 theme={theme}
+                isDark={isDark}
+                onCopyAddress={handleCopyAddress}
               />
             ))}
           </tbody>

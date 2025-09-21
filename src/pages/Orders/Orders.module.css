@@ -1,6 +1,5 @@
 .ordersContainer {
   padding: 20px;
-  min-height: 100vh;
 }
 
 .header {
@@ -72,6 +71,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 20px;
+  border: none;
 }
 
 .table {
@@ -99,15 +99,11 @@
 }
 
 .tableRow {
-  transition: background-color 0.2s ease;
-}
-
-.tableRow:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  /* Clean table row without hover effects */
 }
 
 .selectedRow {
-  background-color: rgba(59, 130, 246, 0.1) !important;
+  /* No additional background color when selected */
 }
 
 .checkboxCell {
@@ -127,11 +123,10 @@
   justify-content: center;
   font-size: 10px;
   font-weight: bold;
-  transition: all 0.2s ease;
 }
 
-.checkbox:hover {
-  opacity: 0.8;
+.checkboxSelected {
+  border-width: 1px;
 }
 
 .cell {
@@ -155,7 +150,18 @@
 .addressCell {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
 }
 
 .dateCell {

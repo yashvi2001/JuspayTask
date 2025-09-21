@@ -2,7 +2,6 @@
   display: flex;
   min-height: 100vh;
   position: relative;
-  transition: all 0.3s ease;
 }
 
 .mainContainer {
@@ -10,82 +9,71 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  transition:
-    margin-left 0.3s ease,
-    margin-right 0.3s ease;
-  overflow: visible;
+  transition: all 0.3s ease;
 }
 
-/* Sidebar layout states */
-.bothOpen .mainContainer {
-  margin-left: 202px;
-  margin-right: 288px;
-}
-
-.leftOnly .mainContainer {
-  margin-left: 202px;
-  margin-right: 0;
-}
-
-.rightOnly .mainContainer {
-  margin-left: 0;
-  margin-right: 288px;
-}
-
+/* Remove all margin adjustments since sidebars are no longer fixed */
+.bothOpen .mainContainer,
+.leftOnly .mainContainer,
+.rightOnly .mainContainer,
 .noneOpen .mainContainer {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* Fixed sidebar positioning */
+/* Sidebar positioning - now relative instead of fixed */
 .sidebar {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  z-index: 1000;
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  z-index: 100;
   transition: transform 0.3s ease;
+  overflow-y: visible;
+  overflow-x: hidden;
 }
 
 .leftSidebar {
-  left: 0;
   width: 202px;
+  order: -1; /* Ensure left sidebar appears first */
 }
 
 .rightSidebar {
-  right: 0;
   width: 288px;
+  order: 1; /* Ensure right sidebar appears last */
 }
 
-/* Mobile and tablet responsive */
+/* Mobile and tablet responsive - hide sidebars with transforms */
 @media (max-width: 1200px) {
-  .bothOpen .mainContainer,
-  .rightOnly .mainContainer {
-    margin-right: 0;
-  }
-
   .rightSidebar {
-    transform: translateX(100%);
+    display: none;
   }
 
   .rightOnly .rightSidebar,
   .bothOpen .rightSidebar {
-    transform: translateX(0);
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 1000;
+    background: inherit;
   }
 }
 
 @media (max-width: 768px) {
-  .bothOpen .mainContainer,
-  .leftOnly .mainContainer {
-    margin-left: 0;
-  }
-
   .leftSidebar {
-    transform: translateX(-100%);
+    display: none;
   }
 
   .leftOnly .leftSidebar,
   .bothOpen .leftSidebar {
-    transform: translateX(0);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    background: inherit;
   }
 
   .rightSidebar {
@@ -94,9 +82,11 @@
 }
 
 @media (max-width: 480px) {
-  .leftSidebar,
-  .rightSidebar {
+  .leftOnly .leftSidebar,
+  .bothOpen .leftSidebar,
+  .rightOnly .rightSidebar,
+  .bothOpen .rightSidebar {
     width: 100%;
-    max-width: 202px;
+    max-width: 280px;
   }
 }

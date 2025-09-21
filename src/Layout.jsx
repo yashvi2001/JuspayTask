@@ -59,12 +59,14 @@ const Layout = () => {
 
   return (
     <div className={`${styles.layout} ${layoutClass}`} style={containerStyle}>
-      <DashboardSidebar
-        isOpen={leftSidebarOpen}
-        onClose={() => setLeftSidebarOpen(false)}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
+      {leftSidebarOpen && (
+        <DashboardSidebar
+          isOpen={leftSidebarOpen}
+          onClose={() => setLeftSidebarOpen(false)}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
 
       <div className={styles.mainContainer}>
         <DashboardHeader
@@ -88,10 +90,12 @@ const Layout = () => {
         </Suspense>
       </div>
 
-      <Notifications
-        isOpen={rightSidebarOpen}
-        onClose={() => setRightSidebarOpen(false)}
-      />
+      {rightSidebarOpen && (
+        <Notifications
+          isOpen={rightSidebarOpen}
+          onClose={() => setRightSidebarOpen(false)}
+        />
+      )}
     </div>
   );
 };

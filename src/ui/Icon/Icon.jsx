@@ -21,6 +21,7 @@ import Account from '../../assets/svg/Account.svg?react';
 import Blog from '../../assets/svg/Blog.svg?react';
 import Social from '../../assets/svg/Social.svg?react';
 import Star from '../../assets/svg/Star.svg?react';
+import Copy from '../../assets/svg/Copy.svg?react';
 // Import theme-based world map images
 import WorldMapLight from '../../assets/images/worldmap-light.png';
 import WorldMapDark from '../../assets/images/worldmap-dark.png';
@@ -222,6 +223,7 @@ const iconComponents = {
   blog: Blog,
   social: Social,
   star: Star,
+  copy: Copy,
   worldMap: WorldMap, // Now uses optimized PNG image
   add: Add,
   sort: Sort,
