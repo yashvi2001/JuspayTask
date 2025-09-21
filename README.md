@@ -1,5 +1,9 @@
 # Juspay Dashboard Task
 
+## 🚀 Live Demo
+
+**View the live application**: [juspay-task-nu.vercel.app](https://juspay-task-nu.vercel.app)
+
 ## Key Features
 
 ### 📊 **Comprehensive Analytics**
@@ -50,7 +54,11 @@
 - Node.js (version 16 or higher)
 - npm or yarn package manager
 
-### Installation
+### Quick Start
+
+**🌐 Live Demo**: Visit [juspay-task-nu.vercel.app](https://juspay-task-nu.vercel.app) to see the application in action
+
+### Local Development
 
 1. **Clone the repository**
 
