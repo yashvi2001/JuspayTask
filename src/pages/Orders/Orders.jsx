@@ -405,16 +405,6 @@ const Orders = () => {
                 key={page}
                 className={`${styles.pageButton} ${page === tableOps.pagination.currentPage ? styles.activePage : ''}`}
                 onClick={() => tableOps.pagination.handlePageChange(page)}
-                style={{
-                  backgroundColor:
-                    page === tableOps.pagination.currentPage
-                      ? theme.text
-                      : 'transparent',
-                  color:
-                    page === tableOps.pagination.currentPage
-                      ? theme.background
-                      : theme.text,
-                }}
               >
                 {page}
               </button>
