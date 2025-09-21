@@ -6,9 +6,9 @@ const DashboardHeader = ({
   onNotificationClick,
   leftSidebarOpen,
   rightSidebarOpen,
+  breadcrumbs = ['Dashboards', 'Default'],
+  onBreadcrumbClick,
 }) => {
-  const breadcrumbs = ['Dashboards', 'Default'];
-
   return (
     <Navbar
       onMenuClick={onMenuClick}
@@ -16,6 +16,7 @@ const DashboardHeader = ({
       leftSidebarOpen={leftSidebarOpen}
       rightSidebarOpen={rightSidebarOpen}
       breadcrumbs={breadcrumbs}
+      onBreadcrumbClick={onBreadcrumbClick}
       showSearch={true}
       showThemeToggle={true}
       showNotifications={true}

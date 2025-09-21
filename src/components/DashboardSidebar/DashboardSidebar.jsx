@@ -5,7 +5,7 @@ import Sidebar from '../../ui/Sidebar';
 import styles from './DashboardSidebar.module.css';
 
 // Main navigation sidebar component matching Figma design exactly
-const DashboardSidebar = ({ isOpen, onClose }) => {
+const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
   const [expandedSections, setExpandedSections] = useState({
     dashboards: true,
     pages: false,
@@ -17,6 +17,12 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
       ...prev,
       [section]: !prev[section],
     }));
+  };
+
+  const handleNavClick = page => {
+    if (onPageChange) {
+      onPageChange(page);
+    }
   };
 
   return (
@@ -85,7 +91,15 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
           </div>
           {expandedSections.dashboards && (
             <div className={styles.subNavItems}>
-              <div className={styles.subNavItemActive}>
+              <div
+                className={`${styles.subNavItem} ${currentPage === 'dashboard' ? styles.subNavItemActive : ''}`}
+                onClick={() => handleNavClick('dashboard')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e =>
+                  e.key === 'Enter' && handleNavClick('dashboard')
+                }
+              >
                 <Icon
                   name="chart-pie"
                   size={16}

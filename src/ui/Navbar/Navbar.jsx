@@ -11,12 +11,34 @@ const Navbar = ({
   leftSidebarOpen,
   rightSidebarOpen,
   breadcrumbs = [],
+  onBreadcrumbClick,
   showSearch = true,
   showThemeToggle = true,
   showNotifications = true,
   children,
 }) => {
   const { theme, toggleTheme, isDark } = useTheme();
+
+  const handleBreadcrumbClick = index => {
+    if (onBreadcrumbClick) {
+      if (index === 0) {
+        // Clicked on "Dashboards" - go to dashboard
+        onBreadcrumbClick('dashboard');
+      } else if (index === 1 && breadcrumbs[1] === 'Orders') {
+        // Clicked on "Orders" - go to orders
+        onBreadcrumbClick('orders');
+      } else if (index === 1 && breadcrumbs[1] === 'Default') {
+        // Clicked on "Default" - go to dashboard
+        onBreadcrumbClick('dashboard');
+      }
+    }
+  };
+
+  const handleClockClick = () => {
+    if (onBreadcrumbClick) {
+      onBreadcrumbClick('orders');
+    }
+  };
 
   return (
     <header
@@ -51,12 +73,18 @@ const Navbar = ({
                   }
                 >
                   <span
+                    className={styles.breadcrumbItem}
                     style={{
                       color:
                         index === breadcrumbs.length - 1
                           ? theme.text
                           : theme.textSecondary,
+                      cursor:
+                        index === breadcrumbs.length - 1
+                          ? 'default'
+                          : 'pointer',
                     }}
+                    onClick={() => handleBreadcrumbClick(index)}
                   >
                     {crumb}
                   </span>
@@ -115,10 +143,12 @@ const Navbar = ({
           </button>
         )}
 
-        {/* Activity button */}
+        {/* Activity button - Clock icon for Orders navigation */}
         <button
           className={styles.iconButton}
-          aria-label="View recent activity"
+          onClick={handleClockClick}
+          aria-label="View Orders"
+          title="View Orders"
           type="button"
         >
           <Icon name="clock" size={18} />
