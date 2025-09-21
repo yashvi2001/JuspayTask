@@ -105,6 +105,12 @@
   color: #9ca3af;
 }
 
+.iconPlaceholder {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
 .chevronIcon {
   width: 13px;
   height: 13px;
@@ -166,9 +172,10 @@
   line-height: 20px;
   padding-left: 14px;
   background-color: rgba(255, 255, 255, 0.12);
-  border-left: 3px solid #8b5cf6;
+  /* border-left: 3px solid #8b5cf6; */
   margin-left: -3px;
   margin-bottom: 3px;
+  position: relative;
 }
 
 .subNavExpandable {
@@ -319,9 +326,9 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-:global(.dark) .subNavItemActive {
+/* :global(.dark) .subNavItemActive {
   background-color: rgba(255, 255, 255, 0.12);
 }
 :global(.light) .subNavItemActive {
   border-left: 3px solid #1c1c1c;
-}
+} */

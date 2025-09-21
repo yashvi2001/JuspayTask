@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-bottom: 24px;
 }
 
 .sectionTitle {
@@ -77,7 +78,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 8px 0;
+  padding: 10px 0;
   position: relative;
   z-index: 2;
   margin: 0;
@@ -113,7 +114,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 0;
+  padding: 8px 0;
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-radius: 6px;

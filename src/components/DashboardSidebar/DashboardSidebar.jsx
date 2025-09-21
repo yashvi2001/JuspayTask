@@ -80,7 +80,7 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
         <div className={styles.section}>
           <div className={styles.expandableNavItem}>
             <div className={styles.navItemContent}>
-              <Icon name="chart-pie" size={18} className={styles.icon} />
+              <div className={styles.iconPlaceholder}></div>
               <span>Dashboards</span>
             </div>
           </div>
@@ -92,6 +92,18 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
               tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && handleNavClick('dashboard')}
             >
+              <div
+                style={{
+                  width: '4px',
+                  height: '20px',
+                  backgroundColor: '#8b5cf6',
+                  position: 'absolute',
+                  left: '0',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  borderRadius: '25px',
+                }}
+              ></div>
               <div className={styles.subNavItemContent}>
                 <div className={styles.chevronPlaceholder}></div>
                 <Icon
@@ -174,7 +186,7 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
       <div className={styles.section}>
         <div className={styles.expandableNavItem}>
           <div className={styles.navItemContent}>
-            <Icon name="book-open" size={18} className={styles.icon} />
+            <div className={styles.iconPlaceholder}></div>
             <span>Pages</span>
           </div>
         </div>
