@@ -20,9 +20,8 @@
   transition: all 0.2s ease;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 85%;
-  max-width: 200px;
   margin: 0 auto;
+  width: 85%; /* Default width when no sidebar class is applied */
 }
 
 .kpiCard:hover {
@@ -167,6 +166,15 @@
     width: 90%;
     max-width: 160px;
   }
+
+  /* Override sidebar spacing on tablets - sidebars are fixed/overlay */
+  :global(.noneOpen) .kpiCard,
+  :global(.leftOnly) .kpiCard,
+  :global(.rightOnly) .kpiCard,
+  :global(.bothOpen) .kpiCard {
+    width: 90%;
+    max-width: 160px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -179,6 +187,15 @@
 
   .kpiCard {
     padding: 18px;
+    width: 88%;
+    max-width: 180px;
+  }
+
+  /* Override sidebar spacing on mobile - sidebars are fixed/overlay */
+  :global(.noneOpen) .kpiCard,
+  :global(.leftOnly) .kpiCard,
+  :global(.rightOnly) .kpiCard,
+  :global(.bothOpen) .kpiCard {
     width: 88%;
     max-width: 180px;
   }
@@ -206,6 +223,15 @@
     padding: 20px;
   }
 
+  /* Override sidebar spacing on small mobile - sidebars are fixed/overlay */
+  :global(.noneOpen) .kpiCard,
+  :global(.leftOnly) .kpiCard,
+  :global(.rightOnly) .kpiCard,
+  :global(.bothOpen) .kpiCard {
+    width: 85%;
+    max-width: 280px;
+  }
+
   .cardValue {
     font-size: 20px;
   }
@@ -215,4 +241,21 @@
 .clickableCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar state-based spacing adjustments for KPI cards */
+:global(.noneOpen) .kpiCard {
+  width: 100%;
+  margin: 0 auto;
+}
+
+:global(.leftOnly) .kpiCard,
+:global(.rightOnly) .kpiCard {
+  width: 98%;
+  margin: 0 auto;
+}
+
+:global(.bothOpen) .kpiCard {
+  width: 85%;
+  margin: 0 auto;
 }

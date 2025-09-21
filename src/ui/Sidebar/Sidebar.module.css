@@ -231,7 +231,53 @@
   font-weight: 500;
 }
 
-/* Mobile responsive - use fixed positioning on mobile */
+/* Mobile overlay for backdrop */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Mobile close button */
+.mobileCloseButton {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+  z-index: 1001;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.mobileCloseButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Tablet and mobile responsive - use fixed positioning */
+@media (max-width: 1200px) {
+  .overlay {
+    display: block;
+  }
+
+  .mobileCloseButton {
+    display: flex;
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
