@@ -67,14 +67,22 @@
 
   .main-content {
     margin-right: var(--right-sidebar-width);
+    padding: 1rem 1.5rem;
   }
 
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 
   .chart-container {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Ensure adequate spacing for KPI cards */
+  .kpi-section {
+    min-height: 160px;
   }
 }
 
@@ -132,12 +140,12 @@
   }
 
   .main-content {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.875rem;
   }
 
   .card-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.125rem;
   }
 
   .search-container {
@@ -152,6 +160,7 @@
   .chart-container,
   .bottom-section {
     grid-template-columns: 1fr;
+    gap: 1.125rem;
   }
 
   /* Smaller table on mobile */
@@ -162,11 +171,16 @@
   .table {
     min-width: 500px;
   }
+
+  /* Enhanced mobile spacing */
+  .kpi-section {
+    min-height: 240px;
+  }
 }
 
 @media (max-width: 480px) {
   .main-content {
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 0.625rem;
   }
 
   .card {
@@ -179,6 +193,15 @@
 
   .header {
     padding: 0 0.75rem;
+  }
+
+  /* Enhanced small mobile spacing */
+  .card-grid {
+    gap: 1.25rem;
+  }
+
+  .kpi-section {
+    min-height: 450px;
   }
 }
 

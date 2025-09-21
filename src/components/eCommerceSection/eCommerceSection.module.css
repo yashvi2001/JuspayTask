@@ -3,24 +3,26 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 8px;
+  gap: 16px;
   height: 100%;
   width: 100%;
 }
 
 .kpiCard {
   border-radius: 12px;
-  padding: 12px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   position: relative;
   min-width: 0;
   min-height: 70px;
   transition: all 0.2s ease;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 85%;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .kpiCard:hover {
@@ -157,8 +159,13 @@
   .kpiGrid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    height: 120px;
-    gap: 12px;
+    height: 140px;
+    gap: 16px;
+  }
+
+  .kpiCard {
+    width: 90%;
+    max-width: 160px;
   }
 }
 
@@ -166,12 +173,14 @@
   .kpiGrid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 14px;
-    height: 200px;
+    gap: 18px;
+    height: 220px;
   }
 
   .kpiCard {
-    padding: 16px;
+    padding: 18px;
+    width: 88%;
+    max-width: 180px;
   }
 
   .chartCard {
@@ -187,7 +196,14 @@
   .kpiGrid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
-    height: 400px;
+    height: 450px;
+    gap: 20px;
+  }
+
+  .kpiCard {
+    width: 85%;
+    max-width: 280px;
+    padding: 20px;
   }
 
   .cardValue {

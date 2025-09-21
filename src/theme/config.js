@@ -5,13 +5,13 @@
 
 export const themes = {
   light: {
-    background: '#f8fafc',
-    surface: '#ffffff',
+    background: '#ffffff',
+    surface: '#f8fafc',
     secondary: '#f1f5f9',
     text: '#1e293b',
     textSecondary: 'rgba(30, 41, 59, 0.6)',
     border: 'rgba(30, 41, 59, 0.1)',
-    cardBackground: '#ffffff',
+    cardBackground: '#f8fafc',
     sidebarBackground: '#ffffff',
     navbarBackground: '#ffffff',
     bodyBackground: '#f8fafc',
