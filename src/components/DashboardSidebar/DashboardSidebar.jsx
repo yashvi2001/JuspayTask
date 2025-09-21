@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useTheme } from '../../theme';
+
 import Icon from '../../ui/Icon';
 import Sidebar from '../../ui/Sidebar';
 import styles from './DashboardSidebar.module.css';
 
-// Main navigation sidebar component
+// Main navigation sidebar component matching Figma design exactly
 const DashboardSidebar = ({ isOpen, onClose }) => {
-  const { theme } = useTheme();
   const [expandedSections, setExpandedSections] = useState({
     dashboards: true,
     pages: false,
+    userProfile: false,
   });
 
   const toggleSection = section => {
@@ -31,211 +31,171 @@ const DashboardSidebar = ({ isOpen, onClose }) => {
               width: '100%',
               height: '100%',
               objectFit: 'contain',
-              borderRadius: '25px',
+              borderRadius: '50%',
             }}
           />
         </div>
-        <span className={styles.logoText} style={{ color: theme.text }}>
-          ByeWind
-        </span>
+        <span className={styles.logoText}>ByeWind</span>
       </div>
 
-      {/* Favorites Section */}
-      <div className={styles.section}>
-        <h3
-          className={styles.sectionTitle}
-          style={{ color: theme.textSecondary }}
-        >
-          Favorites
-        </h3>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Overview</span>
-        </div>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Projects</span>
-        </div>
-      </div>
-
-      {/* Recently Section */}
-      <div className={styles.section}>
-        <h3
-          className={styles.sectionTitle}
-          style={{ color: theme.textSecondary }}
-        >
-          Recently
-        </h3>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Overview</span>
-        </div>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Projects</span>
-        </div>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Campaigns</span>
-        </div>
-        <div className={styles.navItem} style={{ color: theme.textSecondary }}>
-          <div
-            className={styles.dot}
-            style={{ backgroundColor: theme.textSecondary }}
-          ></div>
-          <span>Documents</span>
-        </div>
-      </div>
-
-      {/* Dashboards Section */}
-      <div className={styles.section}>
-        <div
-          className={styles.expandableNavItem}
-          style={{ color: theme.textSecondary }}
-          onClick={() => toggleSection('dashboards')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => e.key === 'Enter' && toggleSection('dashboards')}
-        >
-          <div className={styles.navItemContent}>
-            <Icon name="home" size={20} className={styles.icon} />
-            <span>Dashboards</span>
+      {/* Favorites and Recently sections - Side by side */}
+      <div className={styles.topSections}>
+        {/* Favorites Section */}
+        <div className={styles.favoritesSection}>
+          <h3 className={styles.sectionTitle}>Favorites</h3>
+          <div className={styles.navItem}>
+            <div className={styles.dot}></div>
+            <span>Overview</span>
           </div>
-          <Icon
-            name="chevron-right"
-            size={16}
-            className={`${styles.chevronIcon} ${expandedSections.dashboards ? styles.chevronExpanded : ''}`}
-          />
+          <div className={styles.navItem}>
+            <div className={styles.dot}></div>
+            <span>Projects</span>
+          </div>
         </div>
-        {expandedSections.dashboards && (
-          <>
-            <div
-              className={styles.subNavItemActive}
-              style={{ color: theme.text }}
-            >
-              Default
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              eCommerce
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Projects
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Online Courses
-            </div>
-          </>
-        )}
+
+        {/* Recently Section - Empty as per Figma */}
+        <div className={styles.recentlySection}>
+          <h3 className={styles.sectionTitle}>Recently</h3>
+          {/* No items under Recently - exact replica */}
+        </div>
       </div>
 
-      {/* Pages Section */}
-      <div className={styles.section}>
-        <div
-          className={styles.expandableNavItem}
-          style={{ color: theme.textSecondary }}
-          onClick={() => toggleSection('pages')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => e.key === 'Enter' && toggleSection('pages')}
-        >
-          <div className={styles.navItemContent}>
-            <Icon name="file-text" size={20} className={styles.icon} />
-            <span>Pages</span>
+      {/* Main Navigation */}
+      <div className={styles.mainNavigation}>
+        {/* Dashboards Section */}
+        <div className={styles.section}>
+          <div
+            className={styles.expandableNavItem}
+            onClick={() => toggleSection('dashboards')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('dashboards')}
+          >
+            <div className={styles.navItemContent}>
+              <Icon name="chart-pie" size={18} className={styles.icon} />
+              <span>Dashboards</span>
+            </div>
+            <Icon
+              name={
+                expandedSections.dashboards ? 'chevron-down' : 'chevron-right'
+              }
+              size={16}
+              className={styles.chevronIcon}
+            />
           </div>
-          <Icon
-            name="chevron-right"
-            size={16}
-            className={`${styles.chevronIcon} ${expandedSections.pages ? styles.chevronExpanded : ''}`}
-          />
+          {expandedSections.dashboards && (
+            <div className={styles.subNavItems}>
+              <div className={styles.subNavItemActive}>
+                <Icon
+                  name="chart-pie"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                Default
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon
+                  name="ecommerce"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                eCommerce
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon name="folder" size={16} className={styles.subNavIcon} />
+                Projects
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon
+                  name="book-open"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                Online Courses
+              </div>
+            </div>
+          )}
         </div>
-        {expandedSections.pages && (
-          <>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              User Profile
+
+        {/* Pages Section */}
+        <div className={styles.section}>
+          <div
+            className={styles.expandableNavItem}
+            onClick={() => toggleSection('pages')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('pages')}
+          >
+            <div className={styles.navItemContent}>
+              <Icon name="book-open" size={18} className={styles.icon} />
+              <span>Pages</span>
             </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Overview
+            <Icon
+              name={expandedSections.pages ? 'chevron-down' : 'chevron-right'}
+              size={16}
+              className={styles.chevronIcon}
+            />
+          </div>
+          {expandedSections.pages && (
+            <div className={styles.subNavItems}>
+              {/* User Profile expandable section */}
+              <div
+                className={styles.subNavExpandable}
+                onClick={() => toggleSection('userProfile')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e =>
+                  e.key === 'Enter' && toggleSection('userProfile')
+                }
+              >
+                <div className={styles.subNavItemContent}>
+                  <Icon
+                    name="profile"
+                    size={16}
+                    className={styles.subNavIcon}
+                  />
+                  <span>User Profile</span>
+                </div>
+                <Icon
+                  name={
+                    expandedSections.userProfile
+                      ? 'chevron-down'
+                      : 'chevron-right'
+                  }
+                  size={14}
+                  className={styles.subChevronIcon}
+                />
+              </div>
+
+              {expandedSections.userProfile && (
+                <div className={styles.subSubNavItems}>
+                  <div className={styles.subSubNavItem}>Overview</div>
+                  <div className={styles.subSubNavItem}>Projects</div>
+                  <div className={styles.subSubNavItem}>Campaigns</div>
+                  <div className={styles.subSubNavItem}>Documents</div>
+                  <div className={styles.subSubNavItem}>Followers</div>
+                </div>
+              )}
+
+              <div className={styles.subNavItem}>
+                <Icon name="account" size={16} className={styles.subNavIcon} />
+                Account
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon name="user" size={16} className={styles.subNavIcon} />
+                Corporate
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon name="blog" size={16} className={styles.subNavIcon} />
+                Blog
+              </div>
+              <div className={styles.subNavItem}>
+                <Icon name="social" size={16} className={styles.subNavIcon} />
+                Social
+              </div>
             </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Projects
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Campaigns
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Documents
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Followers
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Account
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Corporate
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Blog
-            </div>
-            <div
-              className={styles.subNavItem}
-              style={{ color: theme.textSecondary }}
-            >
-              Social
-            </div>
-          </>
-        )}
+          )}
+        </div>
       </div>
     </Sidebar>
   );

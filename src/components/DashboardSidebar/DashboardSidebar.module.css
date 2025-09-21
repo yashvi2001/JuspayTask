@@ -4,50 +4,68 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  gap: 20px;
+  gap: 0;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 1000;
   overflow: auto;
   transition: transform 0.3s ease;
-}
-
-.leftSidebar {
-  /* Additional styles for left sidebar positioning */
+  background-color: #1a1a1a; /* This will be overridden by theme classes */
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 6px 0;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 
 .logoIcon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
+  overflow: hidden;
 }
 
 .logoText {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
+  line-height: 24px;
+}
+
+.topSections {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.favoritesSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.recentlySection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 0;
+  margin-bottom: 16px;
 }
 
 .sectionTitle {
@@ -55,96 +73,38 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  padding: 0 10px;
-  margin: 0 0 6px 0;
+  padding: 0;
+  margin: 0 0 8px 0;
 }
 
 .navItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.navItem:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.navItemActive {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 2px 0;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 14px;
-  font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  line-height: 20px;
 }
 
 .expandableNavItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 14px;
   font-weight: 400;
-  justify-content: space-between;
+  line-height: 20px;
+  margin-bottom: 0;
 }
 
-.subNavItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding-left: 36px;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.subNavItemActive {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding-left: 36px;
-  font-size: 13px;
-  font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-}
-
-.dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.chevronIcon {
-  transition: transform 0.2s ease;
-}
-
-.chevronExpanded {
-  transform: rotate(90deg);
+.expandableNavItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .navItemContent {
@@ -153,56 +113,219 @@
   gap: 12px;
 }
 
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #9ca3af;
+}
+
+.chevronIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  color: #9ca3af;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #9ca3af;
+}
+
+.subNavItems {
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.subNavItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 18px;
+
+  margin-bottom: 2px;
+}
+
+.subNavItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.subNavItemActive {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-left: 18px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-left: 3px solid #8b5cf6;
+  margin-left: -3px;
+
+  margin-bottom: 2px;
+}
+
+.subNavExpandable {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 18px;
+
+  margin-bottom: 2px;
+}
+
+.subNavExpandable:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.subNavItemContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subNavIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.subChevronIcon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.subSubNavItems {
+  padding-left: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2px;
+}
+
+.subSubNavItem {
+  padding: 2px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+
+  margin-bottom: 1px;
+}
+
+.subSubNavItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.mainNavigation {
+  flex: 1;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     max-width: 252px;
   }
+
+  .topSections {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Light theme overrides */
+:global(.light) .sidebar {
+  background-color: #ffffff;
+}
+
+:global(.light) .logoText {
+  color: #1e293b;
+}
+
+:global(.light) .sectionTitle {
+  color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .navItem {
+  color: #1e293b;
+}
+
+:global(.light) .expandableNavItem {
+  color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .subNavItem {
+  color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .subSubNavItem {
+  color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .icon,
+:global(.light) .chevronIcon,
+:global(.light) .subNavIcon,
+:global(.light) .subChevronIcon {
+  color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .dot {
+  background-color: rgba(30, 41, 59, 0.6);
+}
+
+:global(.light) .subNavItemActive {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #1e293b;
+}
+
+:global(.light) .navItem:hover,
+:global(.light) .expandableNavItem:hover,
+:global(.light) .subNavItem:hover,
+:global(.light) .subNavExpandable:hover,
+:global(.light) .subSubNavItem:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+  color: #1e293b;
 }
 
 /* Dark theme overrides */
 :global(.dark) .navItem:hover,
-:global(.dark) .navItemActive,
+:global(.dark) .expandableNavItem:hover,
+:global(.dark) .subNavItem:hover,
+:global(.dark) .subNavExpandable:hover,
+:global(.dark) .subSubNavItem:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
 :global(.dark) .subNavItemActive {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-.navItemActive {
-  background-color: rgba(59, 130, 246, 0.1);
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin: 2px 0;
-}
-
-.navItem {
-  cursor: pointer;
-  transition: all 0.2s;
-  padding: 8px 12px;
-  margin: 2px 0;
-  border-radius: 6px;
-}
-
-.navItem:hover {
-  background-color: rgba(59, 130, 246, 0.05);
-}
-
-.subNavItem {
-  cursor: pointer;
-  transition: all 0.2s;
-  padding: 6px 12px 6px 32px;
-  margin: 2px 0;
-  border-radius: 4px;
-}
-
-.subNavItem:hover {
-  background-color: rgba(59, 130, 246, 0.05);
-}
-
-.subNavItemActive {
-  background-color: rgba(59, 130, 246, 0.1);
-  border-radius: 4px;
-  padding: 6px 12px 6px 32px;
-  margin: 2px 0;
-  cursor: pointer;
-  transition: all 0.2s;
+  background-color: rgba(255, 255, 255, 0.12);
 }

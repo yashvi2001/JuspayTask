@@ -1,0 +1,134 @@
+/* eCommerce Section Styles */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+.kpiCard {
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  min-width: 0;
+  transition: all 0.2s ease;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.kpiCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cardValue {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 3px 0;
+}
+
+.positiveChange {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #10b981;
+}
+
+.negativeChange {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #6b7280;
+}
+
+.chartCard {
+  border-radius: 14px;
+  padding: 20px;
+  min-width: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.chartWrapper {
+  flex: 1;
+  width: 100%;
+  height: 260px;
+  position: relative;
+}
+
+/* Dark theme overrides */
+:global(.dark) .kpiCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .chartCard {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .kpiGrid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    height: 200px;
+  }
+
+  .kpiCard {
+    padding: 14px;
+  }
+
+  .chartCard {
+    padding: 14px;
+  }
+
+  .chartWrapper {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    height: 400px;
+  }
+
+  .cardValue {
+    font-size: 18px;
+  }
+}

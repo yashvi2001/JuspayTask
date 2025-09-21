@@ -1,0 +1,620 @@
+/* Revenue Section Styles */
+.revenueCard {
+  border-radius: 14px;
+  padding: 20px;
+  min-width: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.revenueCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.revenueStats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.chartContainer {
+  flex: 1;
+  width: 100%;
+  height: 260px;
+  position: relative;
+}
+
+/* Revenue by Location Styles */
+.locationContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.mapContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.worldMap {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mapDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1f2937;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.locationItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.locationInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cityName {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.revenueValue {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.revenueBar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.revenueBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Dark theme overrides */
+:global(.dark) .revenueCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .revenueCard {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .worldMap {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+:global(.dark) .revenueBar {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .revenueCard {
+    height: auto;
+    min-height: 300px;
+  }
+
+  .chartContainer {
+    height: 200px;
+  }
+
+  .mapContainer {
+    min-height: 100px;
+  }
+
+  .worldMap {
+    width: 150px;
+    height: 80px;
+  }
+}
+
+/* Top Selling Products Table Styles */
+.tableContainer {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.productsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tableHeader {
+  text-align: left;
+  padding: 12px 8px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tableRow {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  padding: 12px 8px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.tableCell:first-child {
+  font-weight: 600;
+}
+
+/* Total Sales Donut Chart Styles */
+.donutContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 280px;
+}
+
+.donutChart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border-radius: 50%;
+}
+
+.percentage {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Dark theme overrides for new components */
+:global(.dark) .tableHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .tableRow {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(.dark) .tableRow:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Responsive adjustments for new components */
+@media (max-width: 1200px) {
+  .donutContainer {
+    height: 200px;
+  }
+
+  .donutChart {
+    width: 150px;
+    height: 150px;
+  }
+
+  .donutCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .percentage {
+    font-size: 14px;
+  }
+
+  .productsTable {
+    font-size: 12px;
+  }
+
+  .tableHeader,
+  .tableCell {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .donutContainer {
+    height: 180px;
+  }
+
+  .donutChart {
+    width: 120px;
+    height: 120px;
+  }
+
+  .donutCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .percentage {
+    font-size: 12px;
+  }
+
+  .productsTable {
+    font-size: 11px;
+  }
+
+  .tableHeader,
+  .tableCell {
+    padding: 6px 4px;
+  }
+}
+
+/* Updated Total Sales Donut Chart Styles */
+.donutContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 280px;
+  padding: 10px 0;
+}
+
+.donutChart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border-radius: 50%;
+}
+
+.percentageBadge {
+  background-color: #10b981;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  min-width: 50px;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.customLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.legendValue {
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+/* Responsive adjustments for updated donut chart */
+@media (max-width: 1200px) {
+  .donutContainer {
+    height: 200px;
+  }
+
+  .donutChart {
+    width: 150px;
+    height: 150px;
+  }
+
+  .donutCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .percentageBadge {
+    font-size: 12px;
+    padding: 6px 10px;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .donutContainer {
+    height: 180px;
+  }
+
+  .donutChart {
+    width: 120px;
+    height: 120px;
+  }
+
+  .donutCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .percentageBadge {
+    font-size: 11px;
+    padding: 5px 8px;
+    min-width: 35px;
+  }
+
+  .legendItem {
+    gap: 6px;
+  }
+
+  .legendLabel,
+  .legendValue {
+    font-size: 12px;
+  }
+}
+
+/* Enhanced Top Selling Products Table Styles */
+.tableContainer {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.productsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.tableHeader {
+  text-align: left;
+  padding: 12px 8px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+}
+
+.tableRow {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  padding: 12px 8px;
+  font-weight: 500;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+.tableCell:first-child {
+  font-weight: 600;
+  width: 40%;
+}
+
+.tableCell:nth-child(2) {
+  width: 20%;
+  text-align: right;
+}
+
+.tableCell:nth-child(3) {
+  width: 20%;
+  text-align: right;
+}
+
+.tableCell:nth-child(4) {
+  width: 20%;
+  text-align: right;
+}
+
+/* Dark theme overrides for enhanced table */
+:global(.dark) .tableHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .tableRow {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(.dark) .tableRow:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Responsive adjustments for enhanced table */
+@media (max-width: 1200px) {
+  .productsTable {
+    font-size: 12px;
+  }
+
+  .tableHeader,
+  .tableCell {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .productsTable {
+    font-size: 11px;
+  }
+
+  .tableHeader,
+  .tableCell {
+    padding: 6px 4px;
+  }
+
+  .tableCell:first-child {
+    width: 35%;
+  }
+
+  .tableCell:nth-child(2),
+  .tableCell:nth-child(3),
+  .tableCell:nth-child(4) {
+    width: 21.67%;
+  }
+}
+
+/* World Map Image Styles */
+.worldMapImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1) contrast(1);
+  transition: filter 0.3s ease;
+}
+
+/* Dark theme adjustments for world map */
+:global(.dark) .worldMapImage {
+  filter: brightness(0.8) contrast(1.2);
+}
+
+/* Responsive adjustments for world map image */
+@media (max-width: 1200px) {
+  .worldMapImage {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .worldMapImage {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Updated World Map Container Styles */
+.worldMap {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove the old gradient background since we're using SVG */
+:global(.dark) .worldMap {
+  background: transparent;
+}

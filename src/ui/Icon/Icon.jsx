@@ -14,6 +14,53 @@ import Clockwise from '../../assets/svg/Clockwise.svg?react';
 import Search from '../../assets/svg/Search.svg?react';
 import Bug from '../../assets/svg/Bug.svg?react';
 import Broadcast from '../../assets/svg/Broadcast.svg?react';
+import Ecommerce from '../../assets/svg/ecommerce.svg?react';
+import Folder from '../../assets/svg/Folder.svg?react';
+import Profile from '../../assets/svg/Profile.svg?react';
+import Account from '../../assets/svg/Account.svg?react';
+import Blog from '../../assets/svg/Blog.svg?react';
+import Social from '../../assets/svg/Social.svg?react';
+import WorldMap from '../../assets/svg/WorldMap.svg?react';
+
+// Custom chevron down component - visible in dark mode
+const ChevronDown = ({ width = 16, height = 16, ...props }) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M3.64645 5.65967C3.84171 5.44678 4.15829 5.44678 4.35355 5.65967L7.64645 9.25C7.84171 9.4629 8.15829 9.4629 8.35355 9.25L11.6464 5.65968C11.8417 5.44678 12.1583 5.44678 12.3536 5.65968C12.5488 5.87257 12.5488 6.21775 12.3536 6.43065L9.06066 10.021C8.47487 10.6597 7.52513 10.6597 6.93934 10.021L3.64645 6.43065C3.45118 6.21775 3.45118 5.87257 3.64645 5.65967Z"
+      fill="currentColor"
+      fillOpacity="0.6"
+    />
+  </svg>
+);
+
+// Custom chevron right component - visible in dark mode
+const ChevronRight = ({ width = 16, height = 16, ...props }) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.65968 3.64645C5.44678 3.84171 5.44678 4.15829 5.65968 4.35355L9.25 7.64645C9.4629 7.84171 9.4629 8.15829 9.25 8.35355L5.65968 11.6464C5.44678 11.8417 5.44678 12.1583 5.65968 12.3536C5.87257 12.5488 6.21775 12.5488 6.43065 12.3536L10.021 9.06066C10.6597 8.47487 10.6597 7.52513 10.021 6.93934L6.43065 3.64645C6.21775 3.45118 5.87257 3.45118 5.65968 3.64645Z"
+      fill="currentColor"
+      fillOpacity="0.6"
+    />
+  </svg>
+);
 
 // Icon mapping
 const iconComponents = {
@@ -21,17 +68,24 @@ const iconComponents = {
   'trending-down': ArrowFall,
   sun: Sun,
   bell: Notifications,
-  home: ChartPie,
-  'file-text': BookOpen,
-  notebook: BookOpen,
+  'chart-pie': ChartPie,
+  'book-open': BookOpen,
   menu: Sidebar,
   search: Search,
   filter: Filter,
   user: User,
   clock: Clockwise,
-  'chevron-right': ArrowRise,
+  'chevron-right': ChevronRight,
+  'chevron-down': ChevronDown,
   bug: Bug,
   broadcast: Broadcast,
+  ecommerce: Ecommerce,
+  folder: Folder,
+  profile: Profile,
+  account: Account,
+  blog: Blog,
+  social: Social,
+  worldMap: WorldMap,
 };
 
 const Icon = memo(
