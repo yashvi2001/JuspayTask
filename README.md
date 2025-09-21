@@ -131,7 +131,6 @@ Multiple chart types provide different perspectives on the data:
 
 - **Line Charts**: Revenue trends over time with comparison capabilities
 - **Bar Charts**: Sales projections vs actuals
-- **Geographic Visualization**: Revenue distribution by location
 
 ### Theme System
 
