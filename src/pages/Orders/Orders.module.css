@@ -216,7 +216,7 @@
 }
 
 .moreButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.901);
 }
 
 .footer {
@@ -246,7 +246,7 @@
 }
 
 .paginationButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(255, 255, 255);
 }
 
 .pageNumbers {
@@ -272,14 +272,15 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.activePage {
-  background-color: #1c1c1c0d !important;
-  color: #1c1c1c !important;
-}
-
-@media (prefers-color-scheme: dark) {
+:global(.dark) {
   .activePage {
     background-color: #ffffff !important;
+    color: #1c1c1c !important;
+  }
+}
+:global(.light) {
+  .activePage {
+    background-color: #eeededdf !important;
     color: #1c1c1c !important;
   }
 }
