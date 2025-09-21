@@ -20,7 +20,21 @@ import Profile from '../../assets/svg/Profile.svg?react';
 import Account from '../../assets/svg/Account.svg?react';
 import Blog from '../../assets/svg/Blog.svg?react';
 import Social from '../../assets/svg/Social.svg?react';
-import WorldMap from '../../assets/svg/WorldMap.svg?react';
+// Replace large SVG with optimized PNG image
+import WorldMapImage from '../../assets/images/WorldMap.png';
+
+// Custom WorldMap component using PNG image instead of large SVG
+const WorldMap = ({ width = 16, height = 16, className = '', ...props }) => (
+  <img
+    src={WorldMapImage}
+    alt="World Map"
+    width={width}
+    height={height}
+    className={className}
+    style={{ flexShrink: 0, objectFit: 'contain' }}
+    {...props}
+  />
+);
 
 // Custom chevron down component - visible in dark mode
 const ChevronDown = ({ width = 16, height = 16, ...props }) => (
@@ -176,7 +190,7 @@ const ArrowRight = ({ width = 16, height = 16, ...props }) => (
   </svg>
 );
 
-// Icon mapping
+// Icon mapping with optimized WorldMap
 const iconComponents = {
   'trending-up': ArrowRise,
   'trending-down': ArrowFall,
@@ -199,7 +213,7 @@ const iconComponents = {
   account: Account,
   blog: Blog,
   social: Social,
-  worldMap: WorldMap,
+  worldMap: WorldMap, // Now uses optimized PNG image
   add: Add,
   sort: Sort,
   document: Document,

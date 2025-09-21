@@ -1,38 +1,18 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useTheme } from '../../theme';
 import styles from './RevenueSection.module.css';
+// Import optimized PNG image instead of large SVG
+import WorldMapImage from '../../assets/images/WorldMap.png';
 
-// Lazy load the large WorldMap SVG
-const LazyWorldMap = React.memo(() => {
-  const [mapSrc, setMapSrc] = useState(null);
-
-  useEffect(() => {
-    // Load the map only when component mounts
-    import('../../assets/svg/WorldMap.svg').then(module => {
-      setMapSrc(module.default);
-    });
-  }, []);
-
-  if (!mapSrc) {
-    return (
-      <div
-        style={{
-          width: '100%',
-          height: '200px',
-          backgroundColor: '#f3f4f6',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#6b7280',
-        }}
-      >
-        Loading map...
-      </div>
-    );
-  }
-
-  return <img src={mapSrc} alt="World Map" className={styles.worldMapImage} />;
-});
+// Optimized WorldMap component using PNG
+const OptimizedWorldMap = React.memo(() => (
+  <img
+    src={WorldMapImage}
+    alt="World Map"
+    className={styles.worldMapImage}
+    style={{ width: '100%', height: '200px', objectFit: 'contain' }}
+  />
+));
 
 const LocationItem = React.memo(({ location, isDark }) => (
   <div className={styles.locationItem}>
@@ -93,10 +73,10 @@ const RevenueByLocation = React.memo(() => {
       </div>
 
       <div className={styles.locationContent}>
-        {/* World Map with SVG - Lazy loaded */}
+        {/* World Map with optimized PNG image */}
         <div className={styles.mapContainer}>
           <div className={styles.worldMap}>
-            <LazyWorldMap />
+            <OptimizedWorldMap />
             <div
               className={styles.mapDot}
               style={{ top: '35%', left: '25%' }}
