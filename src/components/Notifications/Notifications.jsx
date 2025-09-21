@@ -247,7 +247,7 @@ const Notifications = ({ isOpen, onClose }) => {
       </div>
 
       {/* Contacts Section */}
-      <div className={styles.section}>
+      <div className={`${styles.section} ${styles.contactsSection}`}>
         <h3 className={styles.sectionTitle} style={{ color: theme.text }}>
           Contacts
         </h3>

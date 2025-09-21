@@ -1,16 +1,11 @@
 .header {
-  height: 64px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  position: relative;
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .leftSection {
@@ -54,7 +49,7 @@
   align-items: center;
   gap: 8px;
   list-style: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -95,10 +90,10 @@
 .searchInput {
   width: 100%;
   min-width: 240px;
-  height: 36px;
-  border-radius: 8px;
-  padding: 0 40px 0 36px;
-  font-size: 14px;
+  height: 32px;
+  border-radius: 6px;
+  padding: 0 40px 0 32px;
+  font-size: 13px;
   outline: none;
   transition: all 0.2s ease;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -111,7 +106,7 @@
 
 .searchIcon {
   position: absolute;
-  left: 12px;
+  left: 10px;
   pointer-events: none;
 }
 

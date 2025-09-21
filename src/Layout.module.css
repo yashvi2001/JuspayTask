@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  /* Remove min-height constraint to prevent dual scroll */
+  min-height: 100vh;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -21,7 +21,7 @@
 /* When both sidebars are open */
 .bothOpen .mainContainer {
   margin-left: 202px;
-  margin-right: 260px;
+  margin-right: 288px;
 }
 
 /* When only left sidebar is open */
@@ -33,7 +33,7 @@
 /* When only right sidebar is open */
 .rightOnly .mainContainer {
   margin-left: 0;
-  margin-right: 260px;
+  margin-right: 288px;
 }
 
 /* When no sidebars are open */
@@ -58,7 +58,7 @@
 
 .rightSidebar {
   right: 0;
-  width: 260px;
+  width: 288px;
 }
 
 /* Mobile responsive adjustments */
@@ -94,7 +94,7 @@
   }
 
   .rightSidebar {
-    width: 230px;
+    width: 288px;
   }
 }
 

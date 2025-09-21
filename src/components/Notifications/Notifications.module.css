@@ -1,6 +1,7 @@
 .sidebar {
   width: 288px;
-  height: 100vh;
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -9,15 +10,9 @@
   right: 0;
   top: 0;
   z-index: 1000;
-  overflow-y: auto;
-  overflow-x: hidden;
+
   transition: transform 0.3s ease;
   border-left: 2px solid #3b82f6;
-
-  /* Prevent sidebar from interfering with main scroll */
-  overscroll-behavior-y: contain;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
 }
 
 .section {
@@ -29,9 +24,9 @@
 .sectionTitle {
   font-size: 14px;
   font-weight: 600;
-
   margin-bottom: 24px;
   color: #ffffff;
+  line-height: 1.2;
 }
 
 /* Notifications Section */
@@ -144,14 +139,14 @@
 /* Mobile styles */
 @media (max-width: 1200px) {
   .sidebar {
-    width: 252px;
+    width: 288px;
   }
 }
 
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    max-width: 252px;
+    max-width: 288px;
   }
 }
 

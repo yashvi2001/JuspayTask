@@ -1,6 +1,6 @@
 .main {
   flex: 1;
-  padding: 24px;
+  padding: 0 24px 24px 24px;
   max-width: 100%;
   transition: all 0.3s ease;
 }
@@ -8,14 +8,15 @@
 .pageTitle {
   font-size: 20px;
   font-weight: 600;
-  margin: 0 0 24px 0;
+  margin: 24px 0 12px 0;
   color: inherit;
+  line-height: 1.2;
 }
 
 .mainContent {
   display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 12px;
   height: 320px;
 }
 
@@ -34,8 +35,8 @@
 /* Revenue Section Styles */
 .revenueSection {
   display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 12px;
   height: 360px;
 }
 
@@ -46,8 +47,8 @@
 /* Sales Section Styles */
 .salesSection {
   display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 12px;
   height: 360px;
 }
 

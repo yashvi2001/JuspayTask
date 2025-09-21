@@ -1,7 +1,7 @@
 /* Sales Section Styles */
 .salesCard {
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 12px;
   min-width: 0;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -20,13 +20,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .cardTitle {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin: 0;
+  line-height: 1.2;
 }
 
 /* Top Selling Products Table Styles */
@@ -40,23 +41,23 @@
 .productsTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 12px;
   table-layout: fixed;
 }
 
 .tableHeader {
   text-align: left;
-  padding: 12px 8px;
+  padding: 10px 6px;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: transparent;
 }
 
 .tableRow {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: background-color 0.2s ease;
 }
 
@@ -69,7 +70,7 @@
 }
 
 .tableCell {
-  padding: 12px 8px;
+  padding: 10px 6px;
   font-weight: 500;
   vertical-align: middle;
   word-wrap: break-word;
