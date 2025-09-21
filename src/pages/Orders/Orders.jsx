@@ -395,9 +395,10 @@ const Orders = () => {
               cursor: !tableOps.pagination.canGoPrevious
                 ? 'not-allowed'
                 : 'pointer',
+              transform: 'rotate(180deg)',
             }}
           >
-            <Icon name="arrow-left" size={16} />
+            <Icon name="chevron-right" size={16} />
           </button>
           <div className={styles.pageNumbers}>
             {tableOps.pagination.getVisiblePages().map(page => (
@@ -423,7 +424,7 @@ const Orders = () => {
                 : 'pointer',
             }}
           >
-            <Icon name="arrow-right" size={16} />
+            <Icon name="chevron-right" size={16} />
           </button>
         </div>
       </div>
