@@ -54,7 +54,7 @@
 }
 
 .sectionTitle {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: none;
   letter-spacing: 0.3px;
@@ -113,6 +113,12 @@
   color: #9ca3af;
 }
 
+.itemText {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
 .dot {
   width: 4px;
   height: 4px;
@@ -132,7 +138,6 @@
 .subNavItem {
   display: flex;
   align-items: center;
-  gap: 8px;
   padding: 4px 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -182,7 +187,7 @@
 }
 
 .subNavExpandable:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #1c1c1c0d;
 }
 
 .subNavItemContent {
@@ -201,6 +206,14 @@
   width: 11px;
   height: 11px;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-right: 2px;
+}
+
+.chevronPlaceholder {
+  width: 11px;
+  height: 11px;
+  margin-right: 2px;
   flex-shrink: 0;
 }
 
@@ -293,7 +306,7 @@
 :global(.light) .subNavItem:hover,
 :global(.light) .subNavExpandable:hover,
 :global(.light) .subSubNavItem:hover {
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: #1c1c1c0d;
   color: #1c1c1c;
 }
 

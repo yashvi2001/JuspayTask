@@ -15,6 +15,7 @@ export const themes = {
     sidebarBackground: '#ffffff',
     navbarBackground: '#ffffff',
     bodyBackground: '#f8fafc',
+    tableBackground: '#ffffff',
   },
   dark: {
     background: '#1c1c1c',
@@ -27,6 +28,7 @@ export const themes = {
     sidebarBackground: '#1c1c1c',
     navbarBackground: '#1c1c1c',
     bodyBackground: '#1c1c1c',
+    tableBackground: '#1c1c1c',
   },
 };
 

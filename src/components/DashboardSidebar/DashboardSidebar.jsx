@@ -10,7 +10,14 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
   const [expandedSections, setExpandedSections] = useState({
     dashboards: true,
     pages: false,
-    userProfile: false,
+    userProfile: true,
+    account: false,
+    corporate: false,
+    blog: false,
+    social: false,
+    ecommerce: false,
+    projects: false,
+    onlineCourses: false,
   });
 
   const toggleSection = section => {
@@ -52,11 +59,11 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
           <h3 className={styles.sectionTitle}>Favorites</h3>
           <div className={styles.navItem}>
             <div className={styles.dot}></div>
-            <span>Overview</span>
+            <span className={styles.itemText}>Overview</span>
           </div>
           <div className={styles.navItem}>
             <div className={styles.dot}></div>
-            <span>Projects</span>
+            <span className={styles.itemText}>Projects</span>
           </div>
         </div>
 
@@ -85,20 +92,79 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
               tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && handleNavClick('dashboard')}
             >
-              <Icon name="chart-pie" size={16} className={styles.subNavIcon} />
-              Default
+              <div className={styles.subNavItemContent}>
+                <div className={styles.chevronPlaceholder}></div>
+                <Icon
+                  name="chart-pie"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                <span>Default</span>
+              </div>
             </div>
-            <div className={styles.subNavItem}>
-              <Icon name="ecommerce" size={16} className={styles.subNavIcon} />
-              eCommerce
+
+            <div
+              className={styles.subNavExpandable}
+              onClick={() => toggleSection('ecommerce')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => e.key === 'Enter' && toggleSection('ecommerce')}
+            >
+              <div className={styles.subNavItemContent}>
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  className={styles.subChevronIcon}
+                />
+                <Icon
+                  name="ecommerce"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                <span>eCommerce</span>
+              </div>
             </div>
-            <div className={styles.subNavItem}>
-              <Icon name="folder" size={16} className={styles.subNavIcon} />
-              Projects
+
+            <div
+              className={styles.subNavExpandable}
+              onClick={() => toggleSection('projects')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => e.key === 'Enter' && toggleSection('projects')}
+            >
+              <div className={styles.subNavItemContent}>
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  className={styles.subChevronIcon}
+                />
+                <Icon name="folder" size={16} className={styles.subNavIcon} />
+                <span>Projects</span>
+              </div>
             </div>
-            <div className={styles.subNavItem}>
-              <Icon name="book-open" size={16} className={styles.subNavIcon} />
-              Online Courses
+
+            <div
+              className={styles.subNavExpandable}
+              onClick={() => toggleSection('onlineCourses')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e =>
+                e.key === 'Enter' && toggleSection('onlineCourses')
+              }
+            >
+              <div className={styles.subNavItemContent}>
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  className={styles.subChevronIcon}
+                />
+                <Icon
+                  name="book-open"
+                  size={16}
+                  className={styles.subNavIcon}
+                />
+                <span>Online Courses</span>
+              </div>
             </div>
           </div>
         </div>
@@ -123,7 +189,11 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
           >
             <div className={styles.subNavItemContent}>
               <Icon
-                name="chevron-down"
+                name={
+                  expandedSections.userProfile
+                    ? 'chevron-down'
+                    : 'chevron-right'
+                }
                 size={14}
                 className={styles.subChevronIcon}
               />
@@ -142,21 +212,80 @@ const DashboardSidebar = ({ isOpen, onClose, currentPage, onPageChange }) => {
             </div>
           )}
 
-          <div className={styles.subNavItem}>
-            <Icon name="account" size={16} className={styles.subNavIcon} />
-            Account
+          {/* Account expandable section */}
+          <div
+            className={styles.subNavExpandable}
+            onClick={() => toggleSection('account')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('account')}
+          >
+            <div className={styles.subNavItemContent}>
+              <Icon
+                name="chevron-right"
+                size={14}
+                className={styles.subChevronIcon}
+              />
+              <Icon name="account" size={16} className={styles.subNavIcon} />
+              <span>Account</span>
+            </div>
           </div>
-          <div className={styles.subNavItem}>
-            <Icon name="user" size={16} className={styles.subNavIcon} />
-            Corporate
+
+          {/* Corporate expandable section */}
+          <div
+            className={styles.subNavExpandable}
+            onClick={() => toggleSection('corporate')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('corporate')}
+          >
+            <div className={styles.subNavItemContent}>
+              <Icon
+                name="chevron-right"
+                size={14}
+                className={styles.subChevronIcon}
+              />
+              <Icon name="user" size={16} className={styles.subNavIcon} />
+              <span>Corporate</span>
+            </div>
           </div>
-          <div className={styles.subNavItem}>
-            <Icon name="blog" size={16} className={styles.subNavIcon} />
-            Blog
+
+          {/* Blog expandable section */}
+          <div
+            className={styles.subNavExpandable}
+            onClick={() => toggleSection('blog')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('blog')}
+          >
+            <div className={styles.subNavItemContent}>
+              <Icon
+                name="chevron-right"
+                size={14}
+                className={styles.subChevronIcon}
+              />
+              <Icon name="blog" size={16} className={styles.subNavIcon} />
+              <span>Blog</span>
+            </div>
           </div>
-          <div className={styles.subNavItem}>
-            <Icon name="social" size={16} className={styles.subNavIcon} />
-            Social
+
+          {/* Social expandable section */}
+          <div
+            className={styles.subNavExpandable}
+            onClick={() => toggleSection('social')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => e.key === 'Enter' && toggleSection('social')}
+          >
+            <div className={styles.subNavItemContent}>
+              <Icon
+                name="chevron-right"
+                size={14}
+                className={styles.subChevronIcon}
+              />
+              <Icon name="social" size={16} className={styles.subNavIcon} />
+              <span>Social</span>
+            </div>
           </div>
         </div>
       </div>

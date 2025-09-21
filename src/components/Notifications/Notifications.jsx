@@ -50,9 +50,15 @@ const Notifications = ({ isOpen, onClose }) => {
           Notifications
         </h3>
 
-        {notifications.map(notification => (
+        {notifications.map((notification, index) => (
           <div key={notification.id} className={styles.notificationItem}>
-            <div className={styles.notificationIcon}>
+            <div
+              className={styles.notificationIcon}
+              style={{
+                backgroundColor:
+                  index === 1 || index === 3 ? '#E5ECF6' : '#e3f5ff',
+              }}
+            >
               <Icon name={notification.icon} size={16} />
             </div>
             <div className={styles.notificationContent}>

@@ -137,13 +137,6 @@ const Orders = () => {
       console.log('Address copied to clipboard:', address);
     } catch (err) {
       console.error('Failed to copy address:', err);
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = address;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
     }
   }, []);
 
@@ -262,7 +255,7 @@ const Orders = () => {
       <div
         className={styles.tableContainer}
         style={{
-          backgroundColor: isDark ? '#1c1c1c' : theme.cardBackground,
+          backgroundColor: isDark ? '#1c1c1c' : theme.tableBackground,
         }}
       >
         <table className={styles.table}>
@@ -310,7 +303,7 @@ const Orders = () => {
                   PROJECT
                   {tableOps.sort.isSortedBy('project') && (
                     <Icon
-                      name={tableOps.sort.getIcon('user')}
+                      name={tableOps.sort.getIcon('project')}
                       size={12}
                       style={{ marginLeft: '4px' }}
                     />
@@ -326,7 +319,7 @@ const Orders = () => {
                   ADDRESS
                   {tableOps.sort.isSortedBy('address') && (
                     <Icon
-                      name={tableOps.sort.getIcon('user')}
+                      name={tableOps.sort.getIcon('address')}
                       size={12}
                       style={{ marginLeft: '4px' }}
                     />
@@ -342,7 +335,7 @@ const Orders = () => {
                   DATE
                   {tableOps.sort.isSortedBy('date') && (
                     <Icon
-                      name={tableOps.sort.getIcon('user')}
+                      name={tableOps.sort.getIcon('date')}
                       size={12}
                       style={{ marginLeft: '4px' }}
                     />
@@ -358,7 +351,7 @@ const Orders = () => {
                   STATUS
                   {tableOps.sort.isSortedBy('status') && (
                     <Icon
-                      name={tableOps.sort.getIcon('user')}
+                      name={tableOps.sort.getIcon('status')}
                       size={12}
                       style={{ marginLeft: '4px' }}
                     />
@@ -388,11 +381,7 @@ const Orders = () => {
         <div
           className={styles.paginationInfo}
           style={{ color: theme.textSecondary }}
-        >
-          Showing {tableOps.pagination.getInfo().startItem} to{' '}
-          {tableOps.pagination.getInfo().endItem} of{' '}
-          {tableOps.pagination.totalItems} orders
-        </div>
+        ></div>
 
         <div className={styles.pagination}>
           <button
