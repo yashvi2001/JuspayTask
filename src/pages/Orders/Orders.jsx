@@ -1,7 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useTheme } from '../../theme';
 import Icon from '../../ui/Icon';
 import styles from './Orders.module.css';
+
+const OrderRow = React.memo(({ order, isSelected, onSelect, theme }) => (
+  <tr
+    className={`${styles.tableRow} ${isSelected ? styles.selectedRow : ''}`}
+    style={{
+      backgroundColor: isSelected ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+      borderBottom: `1px solid ${theme.border}`,
+    }}
+  >
+    <td className={styles.checkboxCell}>
+      <button
+        className={styles.checkbox}
+        onClick={() => onSelect(order.id)}
+        style={{ color: theme.text }}
+      >
+        {isSelected ? '✓' : ''}
+      </button>
+    </td>
+    <td className={styles.cell} style={{ color: theme.text }}>
+      #{order.id}
+    </td>
+    <td className={styles.cell}>
+      <div className={styles.userCell}>
+        <img
+          src={order.user.avatar}
+          alt={order.user.name}
+          className={styles.avatar}
+        />
+        <span style={{ color: theme.text }}>{order.user.name}</span>
+      </div>
+    </td>
+    <td className={styles.cell} style={{ color: theme.text }}>
+      {order.project}
+    </td>
+    <td className={styles.cell}>
+      <div className={styles.addressCell}>
+        <span style={{ color: theme.text }}>{order.address}</span>
+        {order.id === 'CM9805' && (
+          <Icon
+            name="document"
+            size={14}
+            style={{ color: theme.textSecondary }}
+          />
+        )}
+      </div>
+    </td>
+    <td className={styles.cell}>
+      <div className={styles.dateCell}>
+        <Icon name="date" size={14} style={{ color: theme.textSecondary }} />
+        <span style={{ color: theme.text }}>{order.date}</span>
+      </div>
+    </td>
+    <td className={styles.cell}>
+      <div className={styles.statusCell}>
+        <div
+          className={styles.statusDot}
+          style={{ backgroundColor: order.status.color }}
+        ></div>
+        <span style={{ color: theme.text }}>{order.status.text}</span>
+      </div>
+    </td>
+    <td className={styles.actionCell}>
+      {order.status.text === 'Rejected' && (
+        <button
+          className={styles.moreButton}
+          style={{ color: theme.textSecondary }}
+        >
+          ⋯
+        </button>
+      )}
+    </td>
+  </tr>
+));
 
 const Orders = () => {
   const { theme } = useTheme();
@@ -132,17 +205,22 @@ const Orders = () => {
     },
   ];
 
-  const handleRowSelect = orderId => {
-    const newSelected = new Set(selectedRows);
-    if (newSelected.has(orderId)) {
-      newSelected.delete(orderId);
-    } else {
-      newSelected.add(orderId);
-    }
-    setSelectedRows(newSelected);
-  };
+  const handleRowSelect = useCallback(orderId => {
+    setSelectedRows(prev => {
+      const newSelected = new Set(prev);
+      if (newSelected.has(orderId)) {
+        newSelected.delete(orderId);
+      } else {
+        newSelected.add(orderId);
+      }
+      return newSelected;
+    });
+  }, []);
 
-  const isRowSelected = orderId => selectedRows.has(orderId);
+  const isRowSelected = useCallback(
+    orderId => selectedRows.has(orderId),
+    [selectedRows]
+  );
 
   return (
     <div
@@ -261,85 +339,13 @@ const Orders = () => {
           </thead>
           <tbody>
             {orders.map(order => (
-              <tr
+              <OrderRow
                 key={order.id}
-                className={`${styles.tableRow} ${isRowSelected(order.id) ? styles.selectedRow : ''}`}
-                style={{
-                  backgroundColor: isRowSelected(order.id)
-                    ? 'rgba(59, 130, 246, 0.1)'
-                    : 'transparent',
-                  borderBottom: `1px solid ${theme.border}`,
-                }}
-              >
-                <td className={styles.checkboxCell}>
-                  <button
-                    className={styles.checkbox}
-                    onClick={() => handleRowSelect(order.id)}
-                    style={{ color: theme.text }}
-                  >
-                    {isRowSelected(order.id) ? '✓' : ''}
-                  </button>
-                </td>
-                <td className={styles.cell} style={{ color: theme.text }}>
-                  #{order.id}
-                </td>
-                <td className={styles.cell}>
-                  <div className={styles.userCell}>
-                    <img
-                      src={order.user.avatar}
-                      alt={order.user.name}
-                      className={styles.avatar}
-                    />
-                    <span style={{ color: theme.text }}>{order.user.name}</span>
-                  </div>
-                </td>
-                <td className={styles.cell} style={{ color: theme.text }}>
-                  {order.project}
-                </td>
-                <td className={styles.cell}>
-                  <div className={styles.addressCell}>
-                    <span style={{ color: theme.text }}>{order.address}</span>
-                    {order.id === 'CM9805' && (
-                      <Icon
-                        name="document"
-                        size={14}
-                        style={{ color: theme.textSecondary }}
-                      />
-                    )}
-                  </div>
-                </td>
-                <td className={styles.cell}>
-                  <div className={styles.dateCell}>
-                    <Icon
-                      name="date"
-                      size={14}
-                      style={{ color: theme.textSecondary }}
-                    />
-                    <span style={{ color: theme.text }}>{order.date}</span>
-                  </div>
-                </td>
-                <td className={styles.cell}>
-                  <div className={styles.statusCell}>
-                    <div
-                      className={styles.statusDot}
-                      style={{ backgroundColor: order.status.color }}
-                    ></div>
-                    <span style={{ color: theme.text }}>
-                      {order.status.text}
-                    </span>
-                  </div>
-                </td>
-                <td className={styles.actionCell}>
-                  {order.status.text === 'Rejected' && (
-                    <button
-                      className={styles.moreButton}
-                      style={{ color: theme.textSecondary }}
-                    >
-                      ⋯
-                    </button>
-                  )}
-                </td>
-              </tr>
+                order={order}
+                isSelected={isRowSelected(order.id)}
+                onSelect={handleRowSelect}
+                theme={theme}
+              />
             ))}
           </tbody>
         </table>
@@ -353,18 +359,22 @@ const Orders = () => {
           <Icon name="arrow-left" size={16} />
         </button>
         <div className={styles.pageNumbers}>
-          {[1, 2, 3, 4, 5].map(page => (
-            <button
-              key={page}
-              className={`${styles.pageButton} ${page === 1 ? styles.activePage : ''}`}
-              style={{
-                backgroundColor: page === 1 ? theme.text : 'transparent',
-                color: page === 1 ? theme.background : theme.text,
-              }}
-            >
-              {page}
-            </button>
-          ))}
+          {useMemo(
+            () =>
+              [1, 2, 3, 4, 5].map(page => (
+                <button
+                  key={page}
+                  className={`${styles.pageButton} ${page === 1 ? styles.activePage : ''}`}
+                  style={{
+                    backgroundColor: page === 1 ? theme.text : 'transparent',
+                    color: page === 1 ? theme.background : theme.text,
+                  }}
+                >
+                  {page}
+                </button>
+              )),
+            [theme]
+          )}
         </div>
         <button
           className={styles.paginationButton}

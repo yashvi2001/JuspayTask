@@ -1,6 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo, Suspense } from 'react';
 import { DashboardSidebar, Notifications, DashboardHeader } from './components';
-import { Dashboard, Orders } from './pages';
+
+// Lazy load pages for better performance
+const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
+const Orders = React.lazy(() => import('./pages/Orders/Orders'));
 import { useTheme } from './theme';
 import styles from './Layout.module.css';
 
@@ -24,8 +27,8 @@ const Layout = () => {
     setCurrentPage(page);
   }, []);
 
-  // Determine layout class based on sidebar states
-  const getLayoutClass = () => {
+  // Memoize layout class based on sidebar states
+  const layoutClass = useMemo(() => {
     if (leftSidebarOpen && rightSidebarOpen) {
       return styles.bothOpen;
     } else if (leftSidebarOpen) {
@@ -35,24 +38,27 @@ const Layout = () => {
     } else {
       return styles.noneOpen;
     }
-  };
+  }, [leftSidebarOpen, rightSidebarOpen]);
 
-  // Get breadcrumbs based on current page
-  const getBreadcrumbs = () => {
+  // Memoize breadcrumbs based on current page
+  const breadcrumbs = useMemo(() => {
     if (currentPage === 'orders') {
       return ['Dashboards', 'Orders'];
     }
     return ['Dashboards', 'Default'];
-  };
+  }, [currentPage]);
+
+  // Memoize dynamic styles
+  const containerStyle = useMemo(
+    () => ({
+      backgroundColor: theme.background,
+      color: theme.text,
+    }),
+    [theme.background, theme.text]
+  );
 
   return (
-    <div
-      className={`${styles.layout} ${getLayoutClass()}`}
-      style={{
-        backgroundColor: theme.background,
-        color: theme.text,
-      }}
-    >
+    <div className={`${styles.layout} ${layoutClass}`} style={containerStyle}>
       <DashboardSidebar
         isOpen={leftSidebarOpen}
         onClose={() => setLeftSidebarOpen(false)}
@@ -66,10 +72,16 @@ const Layout = () => {
           onNotificationClick={toggleRightSidebar}
           leftSidebarOpen={leftSidebarOpen}
           rightSidebarOpen={rightSidebarOpen}
-          breadcrumbs={getBreadcrumbs()}
+          breadcrumbs={breadcrumbs}
           onBreadcrumbClick={handlePageChange}
         />
-        {currentPage === 'dashboard' ? <Dashboard /> : <Orders />}
+        <Suspense
+          fallback={
+            <div style={{ padding: '20px', color: theme.text }}>Loading...</div>
+          }
+        >
+          {currentPage === 'dashboard' ? <Dashboard /> : <Orders />}
+        </Suspense>
       </div>
 
       <Notifications

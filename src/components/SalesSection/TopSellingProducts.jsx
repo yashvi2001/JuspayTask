@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTheme } from '../../theme';
 import styles from './SalesSection.module.css';
 
-const TopSellingProducts = () => {
+const TopSellingProducts = React.memo(() => {
   const { theme, isDark } = useTheme();
 
   const productsData = [
@@ -38,13 +38,15 @@ const TopSellingProducts = () => {
     },
   ];
 
-  const formatCurrency = amount => {
+  const formatCurrency = useMemo(() => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,
-    }).format(amount);
-  };
+    });
+  }, []);
+
+  const formatAmount = amount => formatCurrency.format(amount);
 
   return (
     <div
@@ -106,7 +108,7 @@ const TopSellingProducts = () => {
                   className={styles.tableCell}
                   style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
                 >
-                  {formatCurrency(product.price)}
+                  {formatAmount(product.price)}
                 </td>
                 <td
                   className={styles.tableCell}
@@ -118,7 +120,7 @@ const TopSellingProducts = () => {
                   className={styles.tableCell}
                   style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
                 >
-                  {formatCurrency(product.amount)}
+                  {formatAmount(product.amount)}
                 </td>
               </tr>
             ))}
@@ -127,6 +129,6 @@ const TopSellingProducts = () => {
       </div>
     </div>
   );
-};
+});
 
 export default TopSellingProducts;

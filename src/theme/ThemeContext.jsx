@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { themes, THEME_MODES } from './config';
 import { ThemeContext } from './context';
 
@@ -8,11 +8,11 @@ export const ThemeProvider = ({
 }) => {
   const [currentTheme, setCurrentTheme] = useState(defaultTheme);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setCurrentTheme(prev =>
       prev === THEME_MODES.LIGHT ? THEME_MODES.DARK : THEME_MODES.LIGHT
     );
-  };
+  }, []);
 
   const theme = themes[currentTheme];
 
@@ -22,13 +22,16 @@ export const ThemeProvider = ({
     root.style.setProperty('--body-background', theme.bodyBackground);
   }, [theme]);
 
-  const value = {
-    theme,
-    currentTheme,
-    toggleTheme,
-    isLight: currentTheme === THEME_MODES.LIGHT,
-    isDark: currentTheme === THEME_MODES.DARK,
-  };
+  const value = useMemo(
+    () => ({
+      theme,
+      currentTheme,
+      toggleTheme,
+      isLight: currentTheme === THEME_MODES.LIGHT,
+      isDark: currentTheme === THEME_MODES.DARK,
+    }),
+    [theme, currentTheme, toggleTheme]
+  );
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
