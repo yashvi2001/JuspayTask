@@ -1,42 +1,13 @@
 import React, { useMemo } from 'react';
 import { useTheme } from '../../theme';
 import styles from './SalesSection.module.css';
+import dashboardData from '../../data/dashboard.json';
 
 const TopSellingProducts = React.memo(() => {
   const { theme, isDark } = useTheme();
 
-  const productsData = [
-    {
-      name: 'ASOS Ridley High Waist',
-      price: 79.49,
-      quantity: 82,
-      amount: 6518.18,
-    },
-    {
-      name: 'Marco Lightweight Shirt',
-      price: 128.5,
-      quantity: 37,
-      amount: 4754.5,
-    },
-    {
-      name: 'Half Sleeve Shirt',
-      price: 39.99,
-      quantity: 64,
-      amount: 2559.36,
-    },
-    {
-      name: 'Lightweight Jacket',
-      price: 20.0,
-      quantity: 184,
-      amount: 3680.0,
-    },
-    {
-      name: 'Marco Shoes',
-      price: 79.49,
-      quantity: 64,
-      amount: 1965.81,
-    },
-  ];
+  // Get products data from JSON file
+  const productsData = dashboardData.topSellingProducts;
 
   const formatCurrency = useMemo(() => {
     return new Intl.NumberFormat('en-US', {
@@ -69,30 +40,10 @@ const TopSellingProducts = React.memo(() => {
         <table className={styles.productsTable}>
           <thead>
             <tr>
-              <th
-                className={styles.tableHeader}
-                style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
-              >
-                Name
-              </th>
-              <th
-                className={styles.tableHeader}
-                style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
-              >
-                Price
-              </th>
-              <th
-                className={styles.tableHeader}
-                style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
-              >
-                Quantity
-              </th>
-              <th
-                className={styles.tableHeader}
-                style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
-              >
-                Amount
-              </th>
+              <th className={styles.tableHeader}>Name</th>
+              <th className={styles.tableHeader}>Price</th>
+              <th className={styles.tableHeader}>Quantity</th>
+              <th className={styles.tableHeader}>Amount</th>
             </tr>
           </thead>
           <tbody>

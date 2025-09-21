@@ -13,36 +13,31 @@
   transition:
     margin-left 0.3s ease,
     margin-right 0.3s ease;
-
-  /* Remove overflow from container - let body handle scrolling */
   overflow: visible;
 }
 
-/* When both sidebars are open */
+/* Sidebar layout states */
 .bothOpen .mainContainer {
   margin-left: 202px;
   margin-right: 288px;
 }
 
-/* When only left sidebar is open */
 .leftOnly .mainContainer {
   margin-left: 202px;
   margin-right: 0;
 }
 
-/* When only right sidebar is open */
 .rightOnly .mainContainer {
   margin-left: 0;
   margin-right: 288px;
 }
 
-/* When no sidebars are open */
 .noneOpen .mainContainer {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* Sidebar positioning */
+/* Fixed sidebar positioning */
 .sidebar {
   position: fixed;
   top: 0;
@@ -61,7 +56,7 @@
   width: 288px;
 }
 
-/* Mobile responsive adjustments */
+/* Mobile and tablet responsive */
 @media (max-width: 1200px) {
   .bothOpen .mainContainer,
   .rightOnly .mainContainer {

@@ -1,72 +1,90 @@
 import React from 'react';
-import { useTheme } from '../../theme';
 import styles from './eCommerceSection.module.css';
+import { useTheme } from '../../theme';
+import Icon from '../../ui/Icon/Icon';
+import dashboardData from '../../data/dashboard.json';
 
-const KPICards = () => {
+const KPICards = ({ onPageChange }) => {
   const { theme, isDark } = useTheme();
 
-  const kpiData = [
-    {
-      title: 'Customers',
-      value: '3,781',
-      change: '+11.01%',
-      isPositive: true,
-      backgroundColor: isDark ? '#E3F5FF' : '#E3F5FF',
-      textColor: isDark ? '#1F2937' : '#1F2937',
-      titleColor: isDark ? '#6B7280' : '#6B7280',
-    },
-    {
-      title: 'Orders',
-      value: '1,219',
-      change: '-0.03%',
-      isPositive: false,
-      backgroundColor: theme.cardBackground,
-      textColor: isDark ? '#FFFFFF' : '#1F2937',
-      titleColor: isDark ? '#9CA3AF' : '#6B7280',
-    },
-    {
-      title: 'Revenue',
-      value: '$695',
-      change: '+15.03%',
-      isPositive: true,
-      backgroundColor: theme.cardBackground,
-      textColor: isDark ? '#FFFFFF' : '#1F2937',
-      titleColor: isDark ? '#9CA3AF' : '#6B7280',
-    },
-    {
-      title: 'Growth',
-      value: '30.1%',
-      change: '+6.08%',
-      isPositive: true,
-      backgroundColor: isDark ? '#E5ECF6' : '#E5ECF6',
-      textColor: isDark ? '#1F2937' : '#1F2937',
-      titleColor: isDark ? '#6B7280' : '#6B7280',
-    },
-  ];
+  // Get KPI data from JSON and apply theme colors where needed
+  const kpiData = dashboardData.kpiCards.map(kpi => ({
+    ...kpi,
+    backgroundColor: kpi.useThemeColors
+      ? theme.cardBackground
+      : kpi.backgroundColor,
+    textColor: kpi.useThemeColors ? theme.textColor : kpi.textColor,
+    titleColor: kpi.useThemeColors
+      ? isDark
+        ? '#ffffff'
+        : '#000000'
+      : kpi.titleColor,
+  }));
+
+  const handleKPIClick = kpi => {
+    // Navigate to Orders page when Orders KPI is clicked
+    if (kpi.title === 'Orders' && onPageChange) {
+      onPageChange('orders');
+    }
+  };
 
   return (
     <div className={styles.kpiGrid}>
       {kpiData.map((kpi, index) => (
         <div
           key={index}
-          className={styles.kpiCard}
+          className={`${styles.kpiCard} ${kpi.title === 'Orders' ? styles.clickableCard : ''}`}
           style={{
             backgroundColor: kpi.backgroundColor,
             color: kpi.textColor,
+            cursor: kpi.title === 'Orders' ? 'pointer' : 'default',
           }}
+          onClick={() => handleKPIClick(kpi)}
         >
-          <div className={styles.cardTitle} style={{ color: kpi.titleColor }}>
-            {kpi.title}
+          <div className={styles.cardHeader}>
+            <div className={styles.cardTitle} style={{ color: kpi.titleColor }}>
+              {kpi.title}
+            </div>
           </div>
-          <div className={styles.cardValue} style={{ color: kpi.textColor }}>
-            {kpi.value}
-          </div>
-          <div
-            className={
-              kpi.isPositive ? styles.positiveChange : styles.negativeChange
-            }
-          >
-            {kpi.isPositive ? '↗' : '↘'} {kpi.change}
+          <div className={styles.cardBody}>
+            {/* Default state: value on left, change on right */}
+            <div className={styles.cardValue} style={{ color: kpi.textColor }}>
+              {kpi.value}
+            </div>
+            <div className={styles.cardChangeDefault}>
+              <div
+                className={styles.changeIcon}
+                style={{ color: kpi.textColor }}
+              >
+                {kpi.change}{' '}
+                {kpi.isPositive ? (
+                  <Icon name="trending-up" />
+                ) : (
+                  <Icon name="trending-down" />
+                )}
+              </div>
+            </div>
+
+            {/* Hover state: change on left, value on right */}
+            <div className={styles.cardChangeHover}>
+              <div
+                className={styles.changeIcon}
+                style={{ color: kpi.textColor }}
+              >
+                {kpi.change}{' '}
+                {kpi.isPositive ? (
+                  <Icon name="trending-up" />
+                ) : (
+                  <Icon name="trending-down" />
+                )}
+              </div>
+            </div>
+            <div
+              className={styles.cardValueHover}
+              style={{ color: kpi.textColor }}
+            >
+              {kpi.value}
+            </div>
           </div>
         </div>
       ))}

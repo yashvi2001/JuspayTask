@@ -11,7 +11,7 @@
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   flex: 1;
   min-width: 0;
 }
@@ -39,6 +39,35 @@
   transform: translateY(0);
 }
 
+.starButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.starButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.starButton:active {
+  transform: translateY(0);
+}
+
+.breadcrumbContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -51,6 +80,13 @@
   list-style: none;
   font-size: 13px;
   font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbList li {
+  display: flex;
+  align-items: center;
 }
 
 .breadcrumbList li:not(:last-child)::after {
@@ -58,9 +94,14 @@
   margin-left: 8px;
   color: inherit;
   opacity: 0.4;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .breadcrumbItem {
+  display: flex;
+  align-items: center;
   transition: all 0.2s ease;
   padding: 4px 8px;
   border-radius: 4px;
@@ -169,6 +210,10 @@
 
 /* Dark theme */
 :global(.dark) .iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(.dark) .starButton:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 

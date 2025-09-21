@@ -1,11 +1,8 @@
-/* Reset and base styles */
+/* Basic reset and typography */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-* {
   margin: 0;
   padding: 0;
 }
@@ -15,12 +12,9 @@
 }
 
 html {
-  /* Prevent iOS text size adjustment after orientation change */
   -webkit-text-size-adjust: 100%;
-  /* Better text rendering */
   text-rendering: optimizeLegibility;
   background-color: var(--body-background);
-  /* Smooth scrolling for the entire page */
   scroll-behavior: smooth;
 }
 
@@ -32,57 +26,32 @@ body {
     BlinkMacSystemFont,
     'Segoe UI',
     'Roboto',
-    'Helvetica Neue',
-    Arial,
     sans-serif;
   font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.6;
   color: inherit;
   background-color: var(--body-background);
-
-  /* Better font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
-
-  /* GPU acceleration for smoother scrolling */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
 #root {
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
   width: 100%;
   position: relative;
   background-color: var(--body-background);
 }
 
-/* Smooth transitions for theme changes and scroll optimization */
+/* Smooth theme transitions */
 * {
-  -webkit-transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease;
-  -moz-transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease;
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease;
-
-  /* Hardware acceleration for smoother rendering */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
 }
 
-/* Typography improvements */
+/* Clean typography */
 h1,
 h2,
 h3,
@@ -109,74 +78,8 @@ p {
   margin: 0;
 }
 
-/* Better button defaults */
 button {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  color: inherit;
-  margin: 0;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Input improvements */
-input,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  margin: 0;
-  border: none;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: 2px solid rgba(59, 130, 246, 0.5);
-  outline-offset: 2px;
-}
-
-/* Remove focus ring for mouse users */
-.js-focus-visible :focus:not(.focus-visible) {
-  outline: none;
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  * {
-    border-width: 2px !important;
-  }
-}
-
-/* Print styles */
-@media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
 }

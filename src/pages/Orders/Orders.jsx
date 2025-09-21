@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { useTheme } from '../../theme';
 import Icon from '../../ui/Icon';
 import styles from './Orders.module.css';
+import ordersData from '../../data/orders.json';
 
 const OrderRow = React.memo(({ order, isSelected, onSelect, theme }) => (
   <tr
@@ -80,130 +81,8 @@ const Orders = () => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = useState(new Set(['CM9804']));
 
-  // Sample data for the order list
-  const orders = [
-    {
-      id: 'CM9801',
-      user: {
-        name: 'Natali Craig',
-        avatar:
-          '/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png',
-      },
-      project: 'Landing Page',
-      address: 'Meadow Lane Oakland',
-      date: 'Just now',
-      status: { text: 'In Progress', color: '#3b82f6' },
-    },
-    {
-      id: 'CM9802',
-      user: {
-        name: 'Kate Morrison',
-        avatar:
-          '/src/assets/images/401670ae04e9f56b8607ab9a75364d523fa15c7f.png',
-      },
-      project: 'CRM Admin pages',
-      address: 'Larry San Francisco',
-      date: 'A minute ago',
-      status: { text: 'Complete', color: '#10b981' },
-    },
-    {
-      id: 'CM9803',
-      user: {
-        name: 'Drew Cano',
-        avatar:
-          '/src/assets/images/561807e24f384b89a83502e0c6fc6cbc98817827.png',
-      },
-      project: 'Client Project',
-      address: 'Bagwell Avenue Ocala',
-      date: '1 hour ago',
-      status: { text: 'Pending', color: '#06b6d4' },
-    },
-    {
-      id: 'CM9804',
-      user: {
-        name: 'Orlando Diggs',
-        avatar:
-          '/src/assets/images/634a36c96c03cfe9eeba44f0d83003daffa63d9c.png',
-      },
-      project: 'Admin Dashboard',
-      address: 'Washburn Baton Rouge',
-      date: 'Yesterday',
-      status: { text: 'Approved', color: '#f59e0b' },
-    },
-    {
-      id: 'CM9805',
-      user: {
-        name: 'Andi Lane',
-        avatar:
-          '/src/assets/images/6389ca3c52596b27ea5732f2c15e17045ba5d34a.png',
-      },
-      project: 'App Landing Page',
-      address: 'Nest Lane Olivette',
-      date: 'Feb 2, 2023',
-      status: { text: 'Rejected', color: '#6b7280' },
-    },
-    // Duplicate rows for pagination effect
-    {
-      id: 'CM9806',
-      user: {
-        name: 'Natali Craig',
-        avatar:
-          '/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png',
-      },
-      project: 'Landing Page',
-      address: 'Meadow Lane Oakland',
-      date: 'Just now',
-      status: { text: 'In Progress', color: '#3b82f6' },
-    },
-    {
-      id: 'CM9807',
-      user: {
-        name: 'Kate Morrison',
-        avatar:
-          '/src/assets/images/401670ae04e9f56b8607ab9a75364d523fa15c7f.png',
-      },
-      project: 'CRM Admin pages',
-      address: 'Larry San Francisco',
-      date: 'A minute ago',
-      status: { text: 'Complete', color: '#10b981' },
-    },
-    {
-      id: 'CM9808',
-      user: {
-        name: 'Drew Cano',
-        avatar:
-          '/src/assets/images/561807e24f384b89a83502e0c6fc6cbc98817827.png',
-      },
-      project: 'Client Project',
-      address: 'Bagwell Avenue Ocala',
-      date: '1 hour ago',
-      status: { text: 'Pending', color: '#06b6d4' },
-    },
-    {
-      id: 'CM9809',
-      user: {
-        name: 'Orlando Diggs',
-        avatar:
-          '/src/assets/images/634a36c96c03cfe9eeba44f0d83003daffa63d9c.png',
-      },
-      project: 'Admin Dashboard',
-      address: 'Washburn Baton Rouge',
-      date: 'Yesterday',
-      status: { text: 'Approved', color: '#f59e0b' },
-    },
-    {
-      id: 'CM9810',
-      user: {
-        name: 'Andi Lane',
-        avatar:
-          '/src/assets/images/6389ca3c52596b27ea5732f2c15e17045ba5d34a.png',
-      },
-      project: 'App Landing Page',
-      address: 'Nest Lane Olivette',
-      date: 'Feb 2, 2023',
-      status: { text: 'Rejected', color: '#6b7280' },
-    },
-  ];
+  // Get orders data from JSON file
+  const orders = ordersData.orders;
 
   const handleRowSelect = useCallback(orderId => {
     setSelectedRows(prev => {

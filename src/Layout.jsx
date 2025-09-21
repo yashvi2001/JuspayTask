@@ -80,7 +80,11 @@ const Layout = () => {
             <div style={{ padding: '20px', color: theme.text }}>Loading...</div>
           }
         >
-          {currentPage === 'dashboard' ? <Dashboard /> : <Orders />}
+          {currentPage === 'dashboard' ? (
+            <Dashboard onPageChange={handlePageChange} />
+          ) : (
+            <Orders />
+          )}
         </Suspense>
       </div>
 

@@ -11,6 +11,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from '../../theme';
 import styles from './eCommerceSection.module.css';
+import dashboardData from '../../data/dashboard.json';
 
 ChartJS.register(
   CategoryScale,
@@ -24,22 +25,25 @@ ChartJS.register(
 const ProjectionsChart = () => {
   const { theme, isDark } = useTheme();
 
+  // Get projections chart data from JSON file
+  const projectionsData = dashboardData.projectionsChart;
+
   const barChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: projectionsData.labels,
     datasets: [
       {
         label: 'Actuals',
-        data: [18, 22, 18, 25, 12, 20],
+        data: projectionsData.actuals,
         backgroundColor: '#A8C5DA', // Light blue for actuals (bottom segment)
         borderRadius: 4,
-        barThickness: 32,
+        barThickness: 22,
       },
       {
         label: 'Projections',
-        data: [2, 3, 3, 3, 3, 4],
+        data: projectionsData.projections,
         backgroundColor: '#9CA3AF', // Darker gray for projections (top segment)
         borderRadius: 4,
-        barThickness: 32,
+        barThickness: 22,
       },
     ],
   };
@@ -59,9 +63,19 @@ const ProjectionsChart = () => {
         borderWidth: 1,
       },
     },
+    layout: {
+      padding: {
+        top: 10,
+        right: 15,
+        bottom: 10,
+        left: 5,
+      },
+    },
     scales: {
       x: {
         stacked: true,
+        categoryPercentage: 0.8, // Controls spacing between categories
+        barPercentage: 0.9, // Controls bar width within category
         grid: {
           display: false,
         },
@@ -69,25 +83,35 @@ const ProjectionsChart = () => {
           color: isDark ? '#D1D5DB' : '#6B7280',
           font: {
             size: 12,
+            weight: '500',
           },
+          padding: 8,
         },
       },
       y: {
         stacked: true,
         beginAtZero: true,
         grid: {
-          color: isDark ? 'rgba(255, 255, 255, 0.1)' : '#F3F4F6',
+          color: isDark ? 'rgba(255, 255, 255, 0.08)' : '#F3F4F6',
+          lineWidth: 1,
+          drawBorder: false,
         },
         ticks: {
-          color: isDark ? '#D1D5DB' : '#6B7280',
+          color: isDark ? '#9CA3AF' : '#6B7280',
           font: {
-            size: 12,
+            size: 11,
+            weight: '400',
           },
+          padding: 12,
+          stepSize: 10, // Force 10M increments
           callback: function (value) {
             return value + 'M';
           },
         },
         max: 30,
+        border: {
+          display: false,
+        },
       },
     },
   };

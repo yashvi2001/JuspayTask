@@ -57,42 +57,57 @@ const Navbar = ({
             leftSidebarOpen ? 'Close navigation menu' : 'Open navigation menu'
           }
           type="button"
+          style={{ color: theme.text }}
         >
-          <Icon name="menu" size={20} />
+          <Icon name="menu" size={16} />
         </button>
 
-        {/* Breadcrumb navigation */}
-        {breadcrumbs.length > 0 && (
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <ol className={styles.breadcrumbList}>
-              {breadcrumbs.map((crumb, index) => (
-                <li
-                  key={index}
-                  aria-current={
-                    index === breadcrumbs.length - 1 ? 'page' : undefined
-                  }
-                >
-                  <span
-                    className={styles.breadcrumbItem}
-                    style={{
-                      color:
-                        index === breadcrumbs.length - 1
-                          ? theme.text
-                          : theme.textSecondary,
-                      cursor:
-                        index === breadcrumbs.length - 1
-                          ? 'default'
-                          : 'pointer',
-                    }}
-                    onClick={() => handleBreadcrumbClick(index)}
+        {/* Star and Breadcrumb container */}
+        <div className={styles.breadcrumbContainer}>
+          {/* Star/Bookmark icon */}
+          <button
+            className={styles.starButton}
+            aria-label="Add to favorites"
+            title="Add to favorites"
+            type="button"
+            style={{ color: theme.text }}
+          >
+            <Icon name="star" size={16} />
+          </button>
+
+          {/* Breadcrumb navigation */}
+          {breadcrumbs.length > 0 && (
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+              <ol className={styles.breadcrumbList}>
+                {breadcrumbs.map((crumb, index) => (
+                  <li
+                    key={index}
+                    aria-current={
+                      index === breadcrumbs.length - 1 ? 'page' : undefined
+                    }
                   >
-                    {crumb}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        )}
+                    <span
+                      className={styles.breadcrumbItem}
+                      style={{
+                        color:
+                          index === breadcrumbs.length - 1
+                            ? theme.text
+                            : theme.textSecondary,
+                        cursor:
+                          index === breadcrumbs.length - 1
+                            ? 'default'
+                            : 'pointer',
+                      }}
+                      onClick={() => handleBreadcrumbClick(index)}
+                    >
+                      {crumb}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+        </div>
 
         {/* Custom left content */}
         {children?.left}
@@ -138,6 +153,7 @@ const Navbar = ({
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             type="button"
+            style={{ color: theme.text }}
           >
             <Icon name="sun" size={18} />
           </button>
@@ -150,6 +166,7 @@ const Navbar = ({
           aria-label="View Orders"
           title="View Orders"
           type="button"
+          style={{ color: theme.text }}
         >
           <Icon name="clock" size={18} />
         </button>
@@ -163,6 +180,7 @@ const Navbar = ({
               rightSidebarOpen ? 'Close notifications' : 'Open notifications'
             }
             type="button"
+            style={{ color: theme.text }}
           >
             <Icon name="bell" size={18} />
           </button>
@@ -176,6 +194,7 @@ const Navbar = ({
             rightSidebarOpen ? 'Close notifications' : 'Open notifications'
           }
           type="button"
+          style={{ color: theme.text }}
         >
           <Icon name="menu" size={18} />
         </button>

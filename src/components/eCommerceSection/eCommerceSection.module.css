@@ -8,13 +8,14 @@
 }
 
 .kpiCard {
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
   min-width: 0;
+  min-height: 70px;
   transition: all 0.2s ease;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -25,8 +26,68 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2px;
+  min-height: 18px;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex: 1;
+  position: relative;
+}
+
+/* Removed cardValueRow - using cardBody with space-between instead */
+
+.cardChangeHover {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.cardChangeDefault {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  align-self: flex-end;
+}
+
+.cardValueHover {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.kpiCard:hover .cardChangeHover {
+  opacity: 1;
+}
+
+.kpiCard:hover .cardChangeDefault {
+  opacity: 0;
+}
+
+.kpiCard:hover .cardValue {
+  opacity: 0;
+}
+
+.kpiCard:hover .cardValueHover {
+  opacity: 1;
+}
+
 .cardTitle {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   margin: 0;
   color: #6b7280;
@@ -34,35 +95,25 @@
 }
 
 .cardValue {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 2px 0;
-  line-height: 1.1;
+  margin: 0;
+  line-height: 1;
+  transition: opacity 0.2s ease;
 }
 
-.positiveChange {
-  font-size: 10px;
+.changeIcon {
+  font-size: 12px;
   font-weight: 500;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 2px;
-  color: #10b981;
-}
-
-.negativeChange {
-  font-size: 10px;
-  font-weight: 500;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  color: #6b7280;
+  gap: 4px;
 }
 
 .chartCard {
   border-radius: 8px;
-  padding: 12px;
+  padding: 20px 16px 16px 16px;
   min-width: 0;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -75,7 +126,7 @@
 .chartTitle {
   font-size: 14px;
   font-weight: 600;
-  margin: 0 0 12px 0;
+  margin: 0 0 20px 0;
   line-height: 1.2;
 }
 
@@ -118,7 +169,7 @@
   }
 
   .chartCard {
-    padding: 16px;
+    padding: 18px 14px 14px 14px;
   }
 
   .chartWrapper {
@@ -136,4 +187,10 @@
   .cardValue {
     font-size: 20px;
   }
+}
+
+/* Special styling for clickable cards (like Orders KPI) */
+.clickableCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }

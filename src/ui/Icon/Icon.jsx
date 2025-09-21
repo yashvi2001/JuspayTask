@@ -20,13 +20,21 @@ import Profile from '../../assets/svg/Profile.svg?react';
 import Account from '../../assets/svg/Account.svg?react';
 import Blog from '../../assets/svg/Blog.svg?react';
 import Social from '../../assets/svg/Social.svg?react';
-// Replace large SVG with optimized PNG image
-import WorldMapImage from '../../assets/images/WorldMap.png';
+import Star from '../../assets/svg/Star.svg?react';
+// Import theme-based world map images
+import WorldMapLight from '../../assets/images/worldmap-light.png';
+import WorldMapDark from '../../assets/images/worldmap-dark.png';
 
-// Custom WorldMap component using PNG image instead of large SVG
-const WorldMap = ({ width = 16, height = 16, className = '', ...props }) => (
+// Theme-aware WorldMap component using theme-based images
+const WorldMap = ({
+  width = 16,
+  height = 16,
+  className = '',
+  isDark = false,
+  ...props
+}) => (
   <img
-    src={WorldMapImage}
+    src={isDark ? WorldMapDark : WorldMapLight}
     alt="World Map"
     width={width}
     height={height}
@@ -213,6 +221,7 @@ const iconComponents = {
   account: Account,
   blog: Blog,
   social: Social,
+  star: Star,
   worldMap: WorldMap, // Now uses optimized PNG image
   add: Add,
   sort: Sort,
@@ -229,6 +238,7 @@ const Icon = memo(
     color,
     className = '',
     'aria-hidden': ariaHidden = true,
+    isDark = false,
     ...props
   }) => {
     const IconComponent = iconComponents[name];
@@ -254,6 +264,21 @@ const Icon = memo(
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="12" y1="16" x2="12.01" y2="16" />
         </svg>
+      );
+    }
+
+    // Special handling for WorldMap to pass isDark prop
+    if (name === 'worldMap') {
+      return (
+        <IconComponent
+          width={size}
+          height={size}
+          className={className}
+          style={{ color, flexShrink: 0 }}
+          aria-hidden={ariaHidden}
+          isDark={isDark}
+          {...props}
+        />
       );
     }
 

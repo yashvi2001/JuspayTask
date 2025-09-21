@@ -1,19 +1,11 @@
+/* Hide all scrollbars but keep scrolling functionality */
 ::-webkit-scrollbar {
   width: 0px;
-  height: 0px;
   background: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+::-webkit-scrollbar-track,
 ::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: transparent;
 }
 
@@ -22,26 +14,9 @@
   -ms-overflow-style: none;
 }
 
+/* Keep horizontal scroll hidden, vertical scroll available */
 html,
 body {
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.dark ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-  background: transparent;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: transparent;
 }

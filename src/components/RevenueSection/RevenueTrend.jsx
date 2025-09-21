@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { useTheme } from '../../theme';
 import styles from './RevenueSection.module.css';
+import dashboardData from '../../data/dashboard.json';
 
 ChartJS.register(
   CategoryScale,
@@ -28,28 +29,31 @@ ChartJS.register(
 const RevenueTrend = () => {
   const { theme, isDark } = useTheme();
 
-  // Revenue trend data based on the image
+  // Get revenue trend data from JSON file
+  const revenueTrendData = dashboardData.revenueTrend;
+
+  // Revenue trend data based on the exact image patterns
   const revenueData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: revenueTrendData.labels,
     datasets: [
       {
-        label: 'Current Week',
-        data: [12, 8, 10, 16, 18, 20],
-        borderColor: isDark ? '#000000' : '#000000',
+        label: revenueTrendData.currentWeek.label,
+        data: revenueTrendData.currentWeek.data,
+        borderColor: isDark ? '#C6C7F8' : '#1C1C1C',
         backgroundColor: 'transparent',
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 4,
         tension: 0.4,
-        borderDash: [0, 0, 0, 0, 5, 5], // Dashed line from April onwards
+        borderDash: [0, 0, 0, 5, 5], // Dashed line from April onwards
       },
       {
-        label: 'Previous Week',
-        data: [7, 12, 17, 10, 15, 22],
-        borderColor: isDark ? '#60A5FA' : '#60A5FA',
+        label: revenueTrendData.previousWeek.label,
+        data: revenueTrendData.previousWeek.data,
+        borderColor: '#A8C5DA',
         backgroundColor: isDark
-          ? 'rgba(96, 165, 250, 0.1)'
-          : 'rgba(96, 165, 250, 0.1)',
+          ? 'rgba(168, 197, 218, 0.1)'
+          : 'rgba(168, 197, 218, 0.1)',
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 4,
@@ -62,20 +66,17 @@ const RevenueTrend = () => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10,
+      },
+    },
     plugins: {
       legend: {
-        display: true,
-        position: 'top',
-        align: 'start',
-        labels: {
-          usePointStyle: false,
-          padding: 20,
-          font: {
-            size: 12,
-            weight: '500',
-          },
-          color: isDark ? '#D1D5DB' : '#6B7280',
-        },
+        display: false, // Hide default legend as we have custom stats
       },
       tooltip: {
         backgroundColor: isDark
@@ -105,11 +106,15 @@ const RevenueTrend = () => {
             size: 12,
           },
         },
+        border: {
+          display: false,
+        },
       },
       y: {
         beginAtZero: true,
         grid: {
-          color: isDark ? 'rgba(255, 255, 255, 0.1)' : '#F3F4F6',
+          color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+          lineWidth: 1,
         },
         ticks: {
           color: isDark ? '#9CA3AF' : '#6B7280',
@@ -119,13 +124,23 @@ const RevenueTrend = () => {
           callback: function (value) {
             return value + 'M';
           },
+          stepSize: 10,
         },
         max: 30,
+        border: {
+          display: false,
+        },
       },
     },
     interaction: {
       intersect: false,
       mode: 'index',
+    },
+    elements: {
+      point: {
+        hoverRadius: 6,
+        hoverBorderWidth: 2,
+      },
     },
   };
 
@@ -146,31 +161,39 @@ const RevenueTrend = () => {
         </h2>
         <div className={styles.revenueStats}>
           <div className={styles.statItem}>
+            <div
+              className={styles.legendDot}
+              style={{ backgroundColor: isDark ? '#C6C7F8' : '#1C1C1C' }}
+            ></div>
             <span
               className={styles.statLabel}
               style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
             >
-              Current Week
+              {revenueTrendData.currentWeek.label}
             </span>
             <span
               className={styles.statValue}
               style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
             >
-              $58,211
+              {revenueTrendData.currentWeek.value}
             </span>
           </div>
           <div className={styles.statItem}>
+            <div
+              className={styles.legendDot}
+              style={{ backgroundColor: '#A8C5DA' }}
+            ></div>
             <span
               className={styles.statLabel}
               style={{ color: isDark ? '#9CA3AF' : '#6B7280' }}
             >
-              Previous Week
+              {revenueTrendData.previousWeek.label}
             </span>
             <span
               className={styles.statValue}
               style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
             >
-              $68,768
+              {revenueTrendData.previousWeek.value}
             </span>
           </div>
         </div>

@@ -1,16 +1,18 @@
 import React, { useMemo } from 'react';
 import { useTheme } from '../../theme';
 import styles from './RevenueSection.module.css';
-// Import optimized PNG image instead of large SVG
-import WorldMapImage from '../../assets/images/WorldMap.png';
+// Import theme-based world map images
+import WorldMapLight from '../../assets/images/worldmap-light.png';
+import WorldMapDark from '../../assets/images/worldmap-dark.png';
+import dashboardData from '../../data/dashboard.json';
 
-// Optimized WorldMap component using PNG
-const OptimizedWorldMap = React.memo(() => (
+// Theme-aware WorldMap component
+const OptimizedWorldMap = React.memo(({ isDark }) => (
   <img
-    src={WorldMapImage}
+    src={isDark ? WorldMapDark : WorldMapLight}
     alt="World Map"
     className={styles.worldMapImage}
-    style={{ width: '100%', height: '200px', objectFit: 'contain' }}
+    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
   />
 ));
 
@@ -19,13 +21,13 @@ const LocationItem = React.memo(({ location, isDark }) => (
     <div className={styles.locationInfo}>
       <span
         className={styles.cityName}
-        style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
+        style={{ color: isDark ? '#FFFFFF' : '#1C1C1C' }}
       >
         {location.city}
       </span>
       <span
         className={styles.revenueValue}
-        style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
+        style={{ color: isDark ? '#FFFFFF' : '#1C1C1C' }}
       >
         {location.revenue}K
       </span>
@@ -35,7 +37,7 @@ const LocationItem = React.memo(({ location, isDark }) => (
         className={styles.revenueBarFill}
         style={{
           width: `${(location.revenue / location.maxRevenue) * 100}%`,
-          backgroundColor: isDark ? '#60A5FA' : '#3B82F6',
+          backgroundColor: isDark ? '#A8C5DA' : '#A8C5DA',
         }}
       ></div>
     </div>
@@ -45,15 +47,8 @@ const LocationItem = React.memo(({ location, isDark }) => (
 const RevenueByLocation = React.memo(() => {
   const { theme, isDark } = useTheme();
 
-  const locationData = useMemo(
-    () => [
-      { city: 'New York', revenue: 72, maxRevenue: 72 },
-      { city: 'San Francisco', revenue: 39, maxRevenue: 72 },
-      { city: 'Sydney', revenue: 25, maxRevenue: 72 },
-      { city: 'Singapore', revenue: 61, maxRevenue: 72 },
-    ],
-    []
-  );
+  // Get location data from JSON file
+  const locationData = useMemo(() => dashboardData.revenueByLocation, []);
 
   return (
     <div
@@ -66,33 +61,29 @@ const RevenueByLocation = React.memo(() => {
       <div className={styles.cardHeader}>
         <h2
           className={styles.cardTitle}
-          style={{ color: isDark ? '#FFFFFF' : '#1F2937' }}
+          style={{ color: isDark ? '#FFFFFF' : '#1C1C1C' }}
         >
           Revenue by Location
         </h2>
       </div>
 
       <div className={styles.locationContent}>
-        {/* World Map with optimized PNG image */}
+        {/* World Map with theme-based images */}
         <div className={styles.mapContainer}>
           <div className={styles.worldMap}>
-            <OptimizedWorldMap />
-            <div
-              className={styles.mapDot}
-              style={{ top: '35%', left: '25%' }}
-            ></div>
-            <div
-              className={styles.mapDot}
-              style={{ top: '40%', left: '15%' }}
-            ></div>
-            <div
-              className={styles.mapDot}
-              style={{ top: '75%', left: '85%' }}
-            ></div>
-            <div
-              className={styles.mapDot}
-              style={{ top: '60%', left: '75%' }}
-            ></div>
+            <OptimizedWorldMap isDark={isDark} />
+            {/* Location dots positioned from JSON data */}
+            {locationData.map((location, index) => (
+              <div
+                key={index}
+                className={styles.mapDot}
+                style={{
+                  top: location.mapPosition.top,
+                  left: location.mapPosition.left,
+                  backgroundColor: isDark ? '#FFFFFF' : '#1C1C1C',
+                }}
+              ></div>
+            ))}
           </div>
         </div>
 

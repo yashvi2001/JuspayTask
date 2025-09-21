@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import styles from './Dashboard.module.css';
 
-const Dashboard = () => {
+const Dashboard = ({ onPageChange }) => {
   return (
     <div className={styles.main}>
       <h1 className={styles.pageTitle}>eCommerce</h1>
@@ -18,7 +18,7 @@ const Dashboard = () => {
       <div className={styles.mainContent}>
         {/* KPI Cards - Full Width */}
         <div className={styles.leftSection}>
-          <KPICards />
+          <KPICards onPageChange={onPageChange} />
         </div>
 
         {/* Chart Section */}

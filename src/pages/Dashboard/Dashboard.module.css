@@ -17,7 +17,7 @@
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
-  height: 320px;
+  height: 200px;
 }
 
 .leftSection {
@@ -40,7 +40,11 @@
   height: 360px;
 }
 
-.revenueSection > * {
+.revenueSection > *:first-child {
+  flex: 2.3;
+}
+
+.revenueSection > *:last-child {
   flex: 1;
 }
 
@@ -52,7 +56,11 @@
   height: 360px;
 }
 
-.salesSection > * {
+.salesSection > *:first-child {
+  flex: 2.3;
+}
+
+.salesSection > *:last-child {
   flex: 1;
 }
 
@@ -74,7 +82,9 @@
     gap: 20px;
   }
 
-  .revenueSection > * {
+  .revenueSection > *:first-child,
+  .revenueSection > *:last-child {
+    flex: 1;
     height: 280px;
   }
 
@@ -109,7 +119,9 @@
     gap: 16px;
   }
 
-  .revenueSection > * {
+  .revenueSection > *:first-child,
+  .revenueSection > *:last-child {
+    flex: 1;
     height: 240px;
   }
 

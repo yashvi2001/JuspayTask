@@ -1,0 +1,322 @@
+{
+  "kpiCards": [
+    {
+      "title": "Customers",
+      "value": "3,781",
+      "change": "+11.01%",
+      "isPositive": true,
+      "backgroundColor": "#E3F5FF",
+      "textColor": "#1F2937",
+      "titleColor": "#000000"
+    },
+    {
+      "title": "Orders",
+      "value": "1,219",
+      "change": "-0.03%",
+      "isPositive": false,
+      "useThemeColors": true
+    },
+    {
+      "title": "Revenue",
+      "value": "$695",
+      "change": "+15.03%",
+      "isPositive": true,
+      "useThemeColors": true
+    },
+    {
+      "title": "Growth",
+      "value": "30.1%",
+      "change": "+6.08%",
+      "isPositive": true,
+      "backgroundColor": "#E5ECF6",
+      "textColor": "#1F2937",
+      "titleColor": "#000000"
+    }
+  ],
+  "topSellingProducts": [
+    {
+      "name": "ASOS Ridley High Waist",
+      "price": 79.49,
+      "quantity": 82,
+      "amount": 6518.18
+    },
+    {
+      "name": "Marco Lightweight Shirt",
+      "price": 128.5,
+      "quantity": 37,
+      "amount": 4754.5
+    },
+    {
+      "name": "Half Sleeve Shirt",
+      "price": 39.99,
+      "quantity": 64,
+      "amount": 2559.36
+    },
+    {
+      "name": "Lightweight Jacket",
+      "price": 20.0,
+      "quantity": 184,
+      "amount": 3680.0
+    },
+    {
+      "name": "Marco Shoes",
+      "price": 79.49,
+      "quantity": 64,
+      "amount": 1965.81
+    }
+  ],
+  "totalSales": {
+    "labels": ["Direct", "Affiliate", "Sponsored", "E-mail"],
+    "data": [300.56, 135.18, 154.02, 48.96],
+    "legendData": [
+      {
+        "label": "Direct",
+        "value": 300.56,
+        "lightColor": "#1C1C1C",
+        "darkColor": "#C6C7F8"
+      },
+      {
+        "label": "Affiliate",
+        "value": 135.18,
+        "color": "#BAEDBD"
+      },
+      {
+        "label": "Sponsored",
+        "value": 154.02,
+        "color": "#95A4FC"
+      },
+      {
+        "label": "E-mail",
+        "value": 48.96,
+        "color": "#B1E3FF"
+      }
+    ]
+  },
+  "revenueByLocation": [
+    {
+      "city": "New York",
+      "revenue": 72,
+      "maxRevenue": 72,
+      "mapPosition": {
+        "top": "30%",
+        "left": "22%"
+      }
+    },
+    {
+      "city": "San Francisco",
+      "revenue": 39,
+      "maxRevenue": 72,
+      "mapPosition": {
+        "top": "35%",
+        "left": "12%"
+      }
+    },
+    {
+      "city": "Sydney",
+      "revenue": 25,
+      "maxRevenue": 72,
+      "mapPosition": {
+        "top": "70%",
+        "left": "88%"
+      }
+    },
+    {
+      "city": "Singapore",
+      "revenue": 61,
+      "maxRevenue": 72,
+      "mapPosition": {
+        "top": "55%",
+        "left": "78%"
+      }
+    }
+  ],
+  "revenueTrend": {
+    "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    "currentWeek": {
+      "label": "Current Week",
+      "data": [13, 10, 8, 15, 19, 23],
+      "value": "$58,211"
+    },
+    "previousWeek": {
+      "label": "Previous Week",
+      "data": [8, 15, 17, 12, 10, 23],
+      "value": "$68,768"
+    }
+  },
+  "projectionsChart": {
+    "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    "actuals": [18, 22, 18, 25, 12, 20],
+    "projections": [2, 3, 3, 3, 3, 4]
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "icon": "bug",
+      "text": "You have a bug that needs to be fixed.",
+      "time": "Just now"
+    },
+    {
+      "id": 2,
+      "icon": "user",
+      "text": "New user registered",
+      "time": "59 minutes ago"
+    },
+    {
+      "id": 3,
+      "icon": "bug",
+      "text": "You have a bug that needs to be fixed.",
+      "time": "12 hours ago"
+    },
+    {
+      "id": 4,
+      "icon": "broadcast",
+      "text": "Andi Lane subscribed to you",
+      "time": "Today, 11:59 AM"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "avatar": "activityAvatar1",
+      "text": "You have a bug that needs to be fixed.",
+      "time": "Just now"
+    },
+    {
+      "id": 2,
+      "avatar": "activityAvatar2",
+      "text": "Released a new version",
+      "time": "59 minutes ago"
+    },
+    {
+      "id": 3,
+      "avatar": "activityAvatar3",
+      "text": "Submitted a bug",
+      "time": "12 hours ago"
+    },
+    {
+      "id": 4,
+      "avatar": "activityAvatar4",
+      "text": "Modified A data in Page X",
+      "time": "Today, 11:59 AM"
+    },
+    {
+      "id": 5,
+      "avatar": "activityAvatar5",
+      "text": "Deleted a page in Project X",
+      "time": "Feb 2, 2023"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Natali Craig",
+      "avatar": "nataliCraig",
+      "fallback": "NC"
+    },
+    {
+      "name": "Drew Cano",
+      "avatar": "drewCano",
+      "fallback": "DC"
+    },
+    {
+      "name": "Orlando Diggs",
+      "avatar": "orlandoDiggs",
+      "fallback": "OD"
+    },
+    {
+      "name": "Andi Lane",
+      "avatar": "andiLane",
+      "fallback": "AL"
+    },
+    {
+      "name": "Kate Morrison",
+      "avatar": "kateMorrison",
+      "fallback": "KM"
+    },
+    {
+      "name": "Koray Okumus",
+      "avatar": "korayOkumus",
+      "fallback": "KO"
+    }
+  ],
+  "sidebar": {
+    "logo": {
+      "src": "/src/assets/images/25fddc28ee996b0edb37a8f08e577c61dadbc58d.png",
+      "alt": "ByeWind Logo",
+      "text": "ByeWind"
+    },
+    "favorites": [
+      {
+        "name": "Overview",
+        "active": false
+      },
+      {
+        "name": "Projects",
+        "active": false
+      }
+    ],
+    "dashboards": [
+      {
+        "name": "Default",
+        "icon": "chart-pie",
+        "page": "dashboard",
+        "active": true
+      },
+      {
+        "name": "eCommerce",
+        "icon": "ecommerce",
+        "page": "ecommerce",
+        "active": false
+      },
+      {
+        "name": "Projects",
+        "icon": "folder",
+        "page": "projects",
+        "active": false
+      },
+      {
+        "name": "Online Courses",
+        "icon": "book-open",
+        "page": "courses",
+        "active": false
+      }
+    ],
+    "pages": [
+      {
+        "name": "User Profile",
+        "icon": "user",
+        "page": "profile",
+        "subPages": [
+          "Overview",
+          "Projects",
+          "Campaigns",
+          "Documents",
+          "Followers"
+        ]
+      },
+      {
+        "name": "Account",
+        "icon": "account",
+        "page": "account",
+        "subPages": []
+      },
+      {
+        "name": "Corporate",
+        "icon": "corporate",
+        "page": "corporate",
+        "subPages": []
+      },
+      {
+        "name": "Blog",
+        "icon": "blog",
+        "page": "blog",
+        "subPages": []
+      },
+      {
+        "name": "Social",
+        "icon": "social",
+        "page": "social",
+        "subPages": []
+      }
+    ]
+  }
+}
